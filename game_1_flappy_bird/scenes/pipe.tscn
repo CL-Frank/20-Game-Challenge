@@ -42,19 +42,20 @@ scale = Vector2(30, 122)
 mesh = SubResource("QuadMesh_8x3ej")
 
 [node name="Goal" type="Area2D" parent="."]
-modulate = Color(0, 1, 0, 1)
+scale = Vector2(1, 10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
 shape = SubResource("RectangleShape2D_8x3ej")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Goal/CollisionShape2D"]
+visible = false
 scale = Vector2(14, 36)
 mesh = SubResource("QuadMesh_arpqm")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
 
-[connection signal="body_entered" from="Top" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="Bottom" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Top" to="." method="_on_top_body_entered"]
+[connection signal="body_entered" from="Bottom" to="." method="_on_top_body_entered"]
 [connection signal="body_entered" from="Goal" to="." method="_on_goal_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://clix4xcjuym67"]
+
+[ext_resource type="Script" uid="uid://coiunwi2b2mos" path="res://scripts/pipe_spawner.gd" id="1_vfdvo"]
+[ext_resource type="PackedScene" uid="uid://cd2t08et8w6wu" path="res://scenes/pipe.tscn" id="2_4jbh1"]
+
+[node name="PipeSpawner" type="Node2D"]
+script = ExtResource("1_vfdvo")
+pipe = ExtResource("2_4jbh1")
+
+[node name="TimeBetweenPipes" type="Timer" parent="."]
+
+[connection signal="timeout" from="TimeBetweenPipes" to="." method="_on_timer_timeout"]

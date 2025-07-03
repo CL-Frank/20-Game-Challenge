@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
 
-const SPEED = 250.0
+#const SPEED = 250.0
 const JUMP_VELOCITY = -400.0
-
+var score = 0
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -13,7 +13,6 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 	else:
 		velocity += get_gravity() * delta
-	velocity.x = SPEED
 	move_and_slide()
 
 func endGame()-> void:
