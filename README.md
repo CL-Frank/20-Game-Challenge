@@ -14,7 +14,8 @@ Taught me the basics of navigating the Godot Engine and using 2D nodes to create
 **Tech Stack**: Godot Engine  
 **Status**: ✅ Complete  
 **Play here**: *https://cl-frank.itch.io/20-g1-flappy-bird*  
-**Source Code**: *(./game_1_flappy_bird/)*
+[**Source Code**]*(./game_1_flappy_bird/)*
+
 
 ---
 
