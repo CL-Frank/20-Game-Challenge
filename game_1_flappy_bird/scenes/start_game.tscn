@@ -41,7 +41,6 @@ theme_override_font_sizes/font_size = 28
 text = "START"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
-visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "QUIT"

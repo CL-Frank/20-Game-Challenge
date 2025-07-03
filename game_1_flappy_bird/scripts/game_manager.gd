@@ -8,10 +8,13 @@ extends Node2D
 @onready var game_time: Timer = $GameTime
 
 @onready var controls: Label = $Control/Controls
+@onready var final_score_label: Label = $"./GameOver/FinalScoreLabel"
+
 
 var SPEED = 250
 var score = 0
 var fps = 0.0
+var playing = false
 
 @export var pipe_spawner: Node2D
 
@@ -20,16 +23,27 @@ func _ready() -> void:
 	pipe_spawner.distanceVariation = pipeDistanceVariation
 	pipe_spawner.heightVariation = pipeHeightVariation
 
+
+func startGame() -> void:
+	Engine.time_scale = 1
+	game_time.start()
+	controls.hide()
+	pipe_spawner.start()
+	playing = true
+	
+func endGame() -> void:
+	$GameOver.show()
+	final_score_label.text = "FINAL SCORE: "+ str(score)
+	Engine.time_scale = 0
+	game_time.stop()
+	playing = false
+	score_label.hide()
 	
 func _process(delta: float) -> void:
-	if bird.start:
+	if playing:
 		pipe_spawner.position.x -= SPEED * delta
 		score_label.text = "SCORE\n" + str(bird.score)
 		fps_label.text = str(Engine.get_frames_per_second())
-		controls.hide()
-	#difficulty += 0.01 * delta
 	
-
-
 func _on_game_time_timeout() -> void:
 	SPEED += 5

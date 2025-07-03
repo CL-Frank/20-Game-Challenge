@@ -23,7 +23,6 @@ collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
 position = Vector2(0, 0.0106354)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_832ky")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Top/CollisionShape2D"]
