@@ -10,11 +10,11 @@ Each game will be listed below with a short description, tech stack used, and a 
 
 ### 🎮 Game 1: Flappy Bird Clone
 A simple clone of the classic Flappy Bird game. Tap or click to keep the bird in the air and avoid obstacles.
-
+Taught me the basics of navigating the Godot Engine and using 2D nodes to create scenes
 **Tech Stack**: Godot Engine  
 **Status**: ✅ Complete  
 **Play here**: *https://cl-frank.itch.io/20-g1-flappy-bird*  
-**Source Code**: *./game_1_flappy_bird*
+**Source Code**: *./game_1_flappy_bird/*
 
 ---
 
