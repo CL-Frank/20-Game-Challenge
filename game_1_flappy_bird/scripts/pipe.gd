@@ -3,7 +3,6 @@ extends Node2D
 @onready var bottom: Area2D = $Bottom
 @onready var goal: Area2D = $Goal
 
-
 var gap = 500
 
 var cleared = false
@@ -17,17 +16,14 @@ func _ready() -> void:
 	top.position.y = gap
 	bottom.position.y = -gap
 	
-	#Ensure the goal covers the entire Center Gap
-	#goal.scale.y += gap/60
-	
 	var height = randf_range(minHeight, maxHeight)
 	position.y = height 
 
 func _on_goal_body_entered(body: Node2D) -> void:
 	$Timer.start()
 	cleared = true
-	body.score += 1
-
+	body.get_parent().increaseScore()
+	
 func _on_timer_timeout() -> void:
 	queue_free()
 

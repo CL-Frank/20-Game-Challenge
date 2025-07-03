@@ -1,5 +1,6 @@
 extends Node2D
 @export var pipe: PackedScene
+@export var GameManager : Node2D
 var minPipeDistance = 2.8
 var MaxPipeDistance = 3.2
 var nextPipe

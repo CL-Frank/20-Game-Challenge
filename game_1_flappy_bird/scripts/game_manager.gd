@@ -22,6 +22,7 @@ var playing = false
 func _ready() -> void:
 	pipe_spawner.distanceVariation = pipeDistanceVariation
 	pipe_spawner.heightVariation = pipeHeightVariation
+	score_label.hide()
 
 
 func startGame() -> void:
@@ -39,11 +40,16 @@ func endGame() -> void:
 	playing = false
 	score_label.hide()
 	
+func increaseScore() -> void:
+	score+=1
+	score_label.show()
+	score_label.text = "SCORE\n" + str(score)
+	
 func _process(delta: float) -> void:
 	if playing:
 		pipe_spawner.position.x -= SPEED * delta
-		score_label.text = "SCORE\n" + str(bird.score)
+		
 		fps_label.text = str(Engine.get_frames_per_second())
 	
 func _on_game_time_timeout() -> void:
-	SPEED += 5
+	SPEED += 10
