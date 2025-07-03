@@ -7,9 +7,12 @@ extends CharacterBody2D
 const JUMP_VELOCITY = -400.0
 
 func _physics_process(delta: float) -> void:
-	if !GameManager.playing && Input.is_action_just_pressed("jump"):
+	if !GameManager.playing && GameManager.alive && Input.is_action_just_pressed("jump"):
 		GameManager.startGame()
-
+	elif !GameManager.alive && Input.is_action_just_pressed("jump"):
+		get_tree().reload_current_scene()
+		Engine.time_scale = 1
+ 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump"):
 		velocity.y = JUMP_VELOCITY

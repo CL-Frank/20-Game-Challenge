@@ -15,6 +15,7 @@ var SPEED = 250
 var score = 0
 var fps = 0.0
 var playing = false
+var alive = true
 
 @export var pipe_spawner: Node2D
 
@@ -22,7 +23,7 @@ var playing = false
 func _ready() -> void:
 	pipe_spawner.distanceVariation = pipeDistanceVariation
 	pipe_spawner.heightVariation = pipeHeightVariation
-	score_label.hide()
+	#score_label.hide()
 
 
 func startGame() -> void:
@@ -35,14 +36,15 @@ func startGame() -> void:
 func endGame() -> void:
 	$GameOver.show()
 	final_score_label.text = "FINAL SCORE: "+ str(score)
-	Engine.time_scale = 0
+	score_label.hide()
 	game_time.stop()
 	playing = false
-	score_label.hide()
+	alive = false
+	Engine.time_scale = 0
 	
 func increaseScore() -> void:
 	score+=1
-	score_label.show()
+	#score_label.show()
 	score_label.text = "SCORE\n" + str(score)
 	
 func _process(delta: float) -> void:
