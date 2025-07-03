@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2rqja2kybn2w"]
+
+[ext_resource type="PackedScene" uid="uid://bvrwk40ehoo07" path="res://scenes/bird.tscn" id="1_hwd4i"]
+[ext_resource type="PackedScene" uid="uid://cd2t08et8w6wu" path="res://scenes/pipe.tscn" id="2_glms7"]
+[ext_resource type="PackedScene" uid="uid://cvakkepwgsagp" path="res://scenes/killzone.tscn" id="3_udu3i"]
+[ext_resource type="Script" uid="uid://coiunwi2b2mos" path="res://scripts/pipe_spawner.gd" id="4_oo155"]
+
+[node name="GameManager" type="Node2D"]
+
+[node name="bird" parent="." instance=ExtResource("1_hwd4i")]
+
+[node name="Camera2D" type="Camera2D" parent="bird"]
+limit_top = -300
+limit_bottom = 0
+
+[node name="Killzone" parent="." instance=ExtResource("3_udu3i")]
+position = Vector2(283, 385)
+
+[node name="PipeSpawner" type="Node2D" parent="."]
+position = Vector2(405, 0)
+script = ExtResource("4_oo155")
+pipe = ExtResource("2_glms7")
+
+[node name="Timer" type="Timer" parent="PipeSpawner"]
+wait_time = 2.0
+
+[connection signal="timeout" from="PipeSpawner/Timer" to="PipeSpawner" method="_on_timer_timeout"]

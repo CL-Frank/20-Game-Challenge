@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://cd2t08et8w6wu"]
+
+[ext_resource type="Script" uid="uid://bw40suru1h40f" path="res://scripts/pipe.gd" id="1_8x3ej"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_832ky"]
+size = Vector2(26, 118)
+
+[sub_resource type="QuadMesh" id="QuadMesh_8x3ej"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8x3ej"]
+size = Vector2(12, 36)
+
+[sub_resource type="QuadMesh" id="QuadMesh_arpqm"]
+
+[node name="Pipe" type="Node2D"]
+script = ExtResource("1_8x3ej")
+
+[node name="Top" type="Area2D" parent="."]
+modulate = Color(1, 0.0862745, 0.203922, 1)
+position = Vector2(0, -261)
+scale = Vector2(1, 3.76)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
+shape = SubResource("RectangleShape2D_832ky")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Top/CollisionShape2D"]
+scale = Vector2(30, 122)
+mesh = SubResource("QuadMesh_8x3ej")
+
+[node name="Bottom" type="Area2D" parent="."]
+modulate = Color(0.392157, 0.556863, 0.52549, 1)
+position = Vector2(0, 255)
+scale = Vector2(1, 3.76)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
+shape = SubResource("RectangleShape2D_832ky")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Bottom/CollisionShape2D"]
+scale = Vector2(30, 122)
+mesh = SubResource("QuadMesh_8x3ej")
+
+[node name="Goal" type="Area2D" parent="."]
+modulate = Color(0, 1, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
+shape = SubResource("RectangleShape2D_8x3ej")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Goal/CollisionShape2D"]
+scale = Vector2(14, 36)
+mesh = SubResource("QuadMesh_arpqm")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="body_entered" from="Top" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Bottom" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Goal" to="." method="_on_goal_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
