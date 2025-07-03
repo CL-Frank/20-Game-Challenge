@@ -77,7 +77,7 @@ text = "Press \"SPACE\" to Jump"
 [node name="Background" type="MeshInstance2D" parent="."]
 modulate = Color(0.176471, 0.54902, 0.678431, 1)
 z_index = -1
-scale = Vector2(848, 674)
+scale = Vector2(8490, 4508)
 mesh = SubResource("QuadMesh_eaq8r")
 
 [node name="bird" parent="." instance=ExtResource("1_hwd4i")]
