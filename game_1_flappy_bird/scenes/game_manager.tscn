@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2rqja2kybn2w"]
+[gd_scene load_steps=7 format=3 uid="uid://b2rqja2kybn2w"]
 
 [ext_resource type="Script" uid="uid://cnivn6hqalyfr" path="res://scripts/game_manager.gd" id="1_eaq8r"]
 [ext_resource type="PackedScene" uid="uid://bvrwk40ehoo07" path="res://scenes/bird.tscn" id="1_hwd4i"]
 [ext_resource type="PackedScene" uid="uid://cvakkepwgsagp" path="res://scenes/killzone.tscn" id="3_udu3i"]
 [ext_resource type="PackedScene" uid="uid://clix4xcjuym67" path="res://scenes/pipe_spawner.tscn" id="4_oo155"]
+[ext_resource type="PackedScene" uid="uid://setslpunf855" path="res://scenes/game_over.tscn" id="5_eaq8r"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_eaq8r"]
 
 [node name="GameManager" type="Node2D" node_paths=PackedStringArray("pipe_spawner")]
 script = ExtResource("1_eaq8r")
@@ -13,20 +16,6 @@ pipe_spawner = NodePath("PipeSpawner")
 
 [node name="PipeSpawner" parent="." instance=ExtResource("4_oo155")]
 position = Vector2(400, 0)
-
-[node name="bird" parent="." instance=ExtResource("1_hwd4i")]
-
-[node name="Camera2D" type="Camera2D" parent="bird"]
-limit_top = -324
-limit_bottom = 324
-editor_draw_limits = true
-
-[node name="Killzone_T" parent="." instance=ExtResource("3_udu3i")]
-position = Vector2(0, -324)
-rotation = 3.14159
-
-[node name="Killzone_B" parent="." instance=ExtResource("3_udu3i")]
-position = Vector2(0, 324)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -52,6 +41,7 @@ offset_top = 54.0
 offset_right = 25.5
 offset_bottom = 77.0
 grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
 text = "SCORE"
 horizontal_alignment = 1
 
@@ -68,7 +58,45 @@ text = "FPS
 "
 horizontal_alignment = 1
 
+[node name="Controls" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.0
+offset_top = -123.5
+offset_right = 95.0
+offset_bottom = -100.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Press \"SPACE\" to Jump"
+
+[node name="Background" type="MeshInstance2D" parent="."]
+modulate = Color(0.176471, 0.54902, 0.678431, 1)
+z_index = -1
+scale = Vector2(848, 674)
+mesh = SubResource("QuadMesh_eaq8r")
+
+[node name="bird" parent="." instance=ExtResource("1_hwd4i")]
+
+[node name="Camera2D" type="Camera2D" parent="bird"]
+limit_top = -324
+limit_bottom = 324
+editor_draw_limits = true
+
+[node name="Killzone_T" parent="." instance=ExtResource("3_udu3i")]
+position = Vector2(0, -324)
+rotation = 3.14159
+
+[node name="Killzone_B" parent="." instance=ExtResource("3_udu3i")]
+position = Vector2(0, 324)
+
 [node name="GameTime" type="Timer" parent="."]
-autostart = true
+
+[node name="GameOver" parent="." instance=ExtResource("5_eaq8r")]
+visible = false
 
 [connection signal="timeout" from="GameTime" to="." method="_on_game_time_timeout"]

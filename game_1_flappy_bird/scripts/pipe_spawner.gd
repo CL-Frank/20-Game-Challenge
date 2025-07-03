@@ -9,18 +9,16 @@ var distanceVariation = 1.0
 var heightVariation = 1.0
 
 var waitTime = 1.0
-var is_ready = false
 
 @onready var timer: Timer = $TimeBetweenPipes
 # Called when the node enters the scene tree for the first time.
 	
 func start() -> void:
-	if is_ready:
-		spawn_new_pipe()
-		spawn_new_pipe()
+	spawn_new_pipe()
+	spawn_new_pipe()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if(currentPipe.cleared):
+	if(currentPipe && currentPipe.cleared):
 		spawn_new_pipe()
 		currentPipe = nextPipe
 		

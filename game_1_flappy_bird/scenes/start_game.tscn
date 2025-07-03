@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyugwxyru3htw"]
+
+[ext_resource type="Script" uid="uid://cv46bbj7gcytu" path="res://scripts/game_over.gd" id="1_c75kr"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_c75kr"]
+
+[node name="StartGame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c75kr")
+
+[node name="Background" type="MeshInstance2D" parent="."]
+modulate = Color(0.329412, 0.388235, 0.419608, 1)
+position = Vector2(401.5, 323)
+scale = Vector2(805, 650)
+mesh = SubResource("QuadMesh_c75kr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.0
+offset_top = -50.0
+offset_right = 81.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "START"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "QUIT"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -218.0
+offset_top = -291.0
+offset_right = 218.0
+offset_bottom = -166.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 44
+text = "20 Game Challenge
+Game 1 : Flappy Bird"
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_start_button_pressed"]

@@ -5,6 +5,9 @@ extends Node2D
 @onready var score_label: Label = $Control/Score
 @onready var bird: CharacterBody2D = $bird
 @onready var fps_label: Label = $Control/FPS
+@onready var game_time: Timer = $GameTime
+
+@onready var controls: Label = $Control/Controls
 
 var SPEED = 250
 var score = 0
@@ -16,16 +19,14 @@ var fps = 0.0
 func _ready() -> void:
 	pipe_spawner.distanceVariation = pipeDistanceVariation
 	pipe_spawner.heightVariation = pipeHeightVariation
-	pipe_spawner.is_ready = true
-	
-	pipe_spawner.start()
-	
-	print(pipe_spawner.distanceVariation)
+
 	
 func _process(delta: float) -> void:
-	pipe_spawner.position.x -= SPEED * delta
-	score_label.text = "SCORE\n" + str(bird.score)
-	fps_label.text = str(Engine.get_frames_per_second())
+	if bird.start:
+		pipe_spawner.position.x -= SPEED * delta
+		score_label.text = "SCORE\n" + str(bird.score)
+		fps_label.text = str(Engine.get_frames_per_second())
+		controls.hide()
 	#difficulty += 0.01 * delta
 	
 
