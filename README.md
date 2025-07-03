@@ -6,7 +6,7 @@ Each game will be listed below with a short description, tech stack used, and a 
 
 ---
 
-## ✅ Completed Games
+##  Completed Games
 
 ### 🎮 Game 1: Flappy Bird Clone
 A simple clone of the classic Flappy Bird game. Tap or click to keep the bird in the air and avoid obstacles.
@@ -32,6 +32,7 @@ The game gets faster as you play and so becomes more difficult.
 
 | Game # | Title         | Status     |
 |--------|---------------|------------|
+| 1      | Flappy Bird           | ✅ Completed |
 | 2      | Breakout           | 🔲 Planned |
 | 3      | Frogger           | 🔲 Planned |
 | 4      | Indy 500           | 🔲 Planned |
