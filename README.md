@@ -14,7 +14,7 @@ A simple clone of the classic Flappy Bird game. Tap or click to keep the bird in
 **Tech Stack**: Godot Engine  
 **Status**: ✅ Complete  
 **Play here**: *https://cl-frank.itch.io/20-g1-flappy-bird*  
-**Source Code**: */game_1_flappy_bird*
+**Source Code**: *./game_1_flappy_bird*
 
 ---
 
