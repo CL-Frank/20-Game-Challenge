@@ -11,7 +11,7 @@ Each game will be listed below with a short description, tech stack used, and a 
 | Game # | Title         | Status     |
 |--------|---------------|------------|
 | 1      | Flappy Bird           | ✅ Completed |
-| 2      | Breakout           | 🔲 Planned |
+| 2      | Breakout           | 🔧 In Progress |
 | 3      | Frogger           | 🔲 Planned |
 | 4      | Indy 500           | 🔲 Planned |
 | 5      | Conway's Game of Life           | 🔲 Planned |
@@ -50,7 +50,7 @@ The game gets faster as you play and so becomes more difficult.
 ---
 ### 🎮 Game 2: Breakout Clone
 **Tech Stack**: Godot Engine  
-**Status**: Planned  
+**Status**: 🔧 In Progress  
 The original game had eight rows of 16 bricks each, though you can change the number of bricks depending on the size of the game space
 
 #### Challenge Goals
