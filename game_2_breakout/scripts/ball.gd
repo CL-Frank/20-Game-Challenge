@@ -50,6 +50,7 @@ func _physics_process(delta: float) -> void:
 func resetBall() -> void:
 	position = startPos
 	velocity = Vector2.ZERO
+	gameStarted = false
 	
 func startBall() -> void:
 	var launch_speed = SPEED
