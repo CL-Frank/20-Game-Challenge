@@ -33,7 +33,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Ball" parent="." node_paths=PackedStringArray("BallStartPos") instance=ExtResource("2_glms7")]
-position = Vector2(1, 111)
+position = Vector2(1, 203)
 BallStartPos = NodePath("../PaddleStartPos/BallStartPos")
 
 [node name="Killzone" parent="." instance=ExtResource("6_ternb")]
@@ -41,44 +41,92 @@ position = Vector2(0, 371)
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_left = -581.0
-offset_top = -353.0
-offset_right = -541.0
-offset_bottom = -313.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -577.0
+offset_top = -325.0
+offset_right = 578.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Score" type="Label" parent="UI"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 65.0
-offset_top = 65.0
-offset_right = 105.0
-offset_bottom = 88.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 102.0
+grow_vertical = 0
 text = "SCORE: 0"
+vertical_alignment = 1
 
 [node name="Lives" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -46.0
+offset_right = 98.0
+offset_bottom = -23.0
+grow_vertical = 0
+text = "LIVES"
+vertical_alignment = 1
+
+[node name="StartHint" type="Label" parent="UI"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 57.5
-offset_top = 111.0
-offset_right = 112.5
-offset_bottom = 134.0
+offset_left = -137.0
+offset_top = 117.5
+offset_right = 137.0
+offset_bottom = 133.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "LIVES"
+text = "Press Space to Start"
+
+[node name="Win" type="Label" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.0
+offset_top = -78.5
+offset_right = 107.0
+offset_bottom = -62.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Congrats You Won"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayAgain" type="Button" parent="UI/Win"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -69.0
+offset_top = 98.0
+offset_right = 69.0
+offset_bottom = 122.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_hover_color = Color(0, 1, 0, 1)
+text = "PLAY AGAIN"
 
 [node name="PaddleStartPos" type="Node2D" parent="."]
-position = Vector2(0, 172)
+position = Vector2(0, 261)
 
 [node name="BallStartPos" type="Marker2D" parent="PaddleStartPos"]
 position = Vector2(0, -61)
@@ -87,25 +135,24 @@ position = Vector2(0, -61)
 scale = Vector2(1.00551, 12.12)
 
 [node name="Left_Wall" parent="Walls" instance=ExtResource("4_oo155")]
-position = Vector2(-600, 0)
-scale = Vector2(1, 1)
+position = Vector2(-605.663, 0.0825082)
 
 [node name="Right_Wall" parent="Walls" instance=ExtResource("4_oo155")]
-position = Vector2(600, 0)
+position = Vector2(604.668, 0)
 scale = Vector2(0.991313, 1)
 
 [node name="Top_Wall" parent="Walls" instance=ExtResource("4_oo155")]
-position = Vector2(0, -26.568)
+position = Vector2(0, -29.2904)
 scale = Vector2(27.6873, 0.0825083)
 
 [node name="BrickSpawner" parent="." node_paths=PackedStringArray("spawnStart") instance=ExtResource("6_q8mjp")]
 position = Vector2(-581, -353)
-rows = 5
-cols = 8
+rows = 3
+cols = 10
 spawnStart = NodePath("../Marker2D")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(1, -199)
+position = Vector2(1, -252)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -114,4 +161,7 @@ visible = false
 
 [connection signal="brick_destroyed" from="Ball" to="." method="_on_ball_brick_destroyed"]
 [connection signal="dead" from="Ball" to="." method="_on_ball_dead"]
+[connection signal="game_started" from="Ball" to="." method="_on_ball_game_started"]
 [connection signal="life_lost" from="Ball" to="." method="_on_ball_life_lost"]
+[connection signal="pressed" from="UI/Win/PlayAgain" to="." method="_on_play_again_pressed"]
+[connection signal="won" from="BrickSpawner" to="." method="_on_brick_spawner_won"]

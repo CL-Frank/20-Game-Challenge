@@ -4,21 +4,27 @@ class_name Ball
 @export var BallStartPos: Marker2D
 
 var SPEED = 20.0
-var SPEED_CAP = 30.0
-signal life_lost
-signal dead
+var SPEED_CAP = 25.0
+
 var lives = 3
-var score = 0
-signal brick_destroyed
+
 var startPos = Vector2.ZERO
 var last_collider_id
 var last_velocity
+var gameStarted = false
+
+signal life_lost
+signal game_started
+signal brick_destroyed
+signal dead
 
 func _ready() -> void:
 	startPos = position
 func _process(delta: float) -> void:
 	var input = Input.is_action_just_pressed("ui_accept")
-	if input:
+	if input and !gameStarted:
+		game_started.emit()
+		gameStarted = true
 		startBall()
 
 func _physics_process(delta: float) -> void:
@@ -30,9 +36,10 @@ func _physics_process(delta: float) -> void:
 	
 	var collider = collision_info.get_collider()
 	if collider is Brick:
-		collider.destroy()
 		brick_destroyed.emit()
-		SPEED = min(SPEED + 0.5, SPEED_CAP)  # Cap SPEED at 30
+		await get_tree().process_frame
+		collider.destroy()
+		SPEED = min(SPEED + 0.5, SPEED_CAP)
 
 	if collider is Paddle or collider is Brick:
 		ball_collision(collider)
@@ -47,16 +54,16 @@ func resetBall() -> void:
 func startBall() -> void:
 	var launch_speed = SPEED
 	if last_velocity:
-		launch_speed = min(last_velocity.length(), 30)
+		launch_speed = min(last_velocity.length(), SPEED_CAP)
 	var angle = deg_to_rad(randf_range(-60, 60))  # random angle between -10° and 10°
 	velocity = Vector2.UP.rotated(angle).normalized() * launch_speed
 
 
 	
 func on_life_lost() -> void:
+	lives -=1
+	life_lost.emit()
 	if lives > 0:
-		life_lost.emit()
-		lives -=1
 		resetBall()
 	else:
 		dead.emit()
@@ -79,12 +86,8 @@ func ball_collision(collider):
 
 		# Rotate straight up vector by bounce_angle left/right
 		velocity = Vector2.UP.rotated(bounce_angle).normalized() * SPEED
-
-
-
+#if bricks need to be hit multiple times, this function randomizes the direction the ball bounces
 	elif collider is Brick:
-		print("Ball velocity:", velocity, "Speed:", velocity.length())
-		
 		if collider.get_rid() == last_collider_id:
 			velocity = velocity.rotated(deg_to_rad(randf_range(-45, 45))).normalized() * SPEED
 		else:

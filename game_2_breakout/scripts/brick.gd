@@ -11,7 +11,7 @@ func destroy() -> void:
 func get_size()->Vector2:
 	return collision_shape_2d.shape.get_rect().size 
 	
-func set_postion(postion:Vector2):
-	global_position = position
+func set_postion(pos:Vector2):
+	position = pos
 func getWidth():
 	return get_size().x

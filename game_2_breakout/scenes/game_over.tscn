@@ -17,7 +17,7 @@ script = ExtResource("1_xeevv")
 
 [node name="Background" type="MeshInstance2D" parent="."]
 modulate = Color(0.564706, 0, 0.027451, 0.403922)
-scale = Vector2(802, 655.26)
+scale = Vector2(1150, 655.26)
 mesh = SubResource("QuadMesh_xeevv")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
