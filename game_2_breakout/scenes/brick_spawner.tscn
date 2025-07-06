@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5ww3hknq01s7"]
+
+[ext_resource type="Script" uid="uid://bmw517pwpb7hc" path="res://scripts/brick_spawner.gd" id="1_wkjlh"]
+[ext_resource type="PackedScene" uid="uid://djl1fm2k5uju5" path="res://scenes/brick.tscn" id="2_g6sij"]
+
+[node name="BrickSpawner" type="Node2D"]
+script = ExtResource("1_wkjlh")
+brick = ExtResource("2_g6sij")
