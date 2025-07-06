@@ -11,7 +11,7 @@ Each game will be listed below with a short description, tech stack used, and a 
 | Game # | Title         | Status     |
 |--------|---------------|------------|
 | 1      | Flappy Bird           | ✅ Completed |
-| 2      | Breakout           | 🔧 In Progress |
+| 2      | Breakout           | ✅ Completed |
 | 3      | Frogger           | 🔲 Planned |
 | 4      | Indy 500           | 🔲 Planned |
 | 5      | Conway's Game of Life           | 🔲 Planned |
@@ -20,12 +20,14 @@ Each game will be listed below with a short description, tech stack used, and a 
 
 ##  Completed Games
 
-### 🎮 Game 1: Flappy Bird Clone
-A simple clone of the classic Flappy Bird game. Tap or click to keep the bird in the air and avoid obstacles.
-Taught me the basics of navigating the Godot Engine and using 2D nodes to create scenes, spaaning and deleting objects.
-The game gets faster as you play and so becomes more difficult.
+### 🐦 Game 1: Flappy Bird Clone
+A simple clone of the classic Flappy Bird game. Tap or click to keep the bird in the air and avoid obstacles. The game gets faster as you play and so becomes more difficult.  
+**Things I learned:**
+- Taught me the basics of navigating the Godot Engine
+- Using 2D nodes to create scenes, spawning and deleting objects   
+
 **Tech Stack**: Godot Engine  
-**Status**: ✅ Complete  
+
 **Source Code**: [Game 1: Flappy Bird](./game_1_flappy_bird/)  
 **Date Completed** : 03 July 2025
 
@@ -46,24 +48,43 @@ The game gets faster as you play and so becomes more difficult.
 - High score saving
 - Pause and resume functionality
 - Sprites for visuals
+- Mobile Support
 
 ---
-### 🎮 Game 2: Breakout Clone
-**Tech Stack**: Godot Engine  
-**Status**: 🔧 In Progress  
-The original game had eight rows of 16 bricks each, though you can change the number of bricks depending on the size of the game space
+### 🧱 Game 2: Breakout Clone
+A classic Breakout-style game where you control a paddle to bounce a ball and destroy bricks.  
+The original game had eight rows of 16 bricks each, though you can change the number of bricks depending on the size of the game space.
+**Things I learned:** 
+- Making use of signals to control game states and conditions across scenes
+- Controlling rigid bodies  
+**Tech Stack**: Godot Engine   
+
+**Source Code**: [Game 2: Breakout](./game_2_breakout/)  
+**Date Completed** : 06 July 2025 
+
+**Play here**: *https://cl-frank.itch.io/20-g2-breakout*  
 
 #### Challenge Goals
-🔲Create a game space with walls and a ceiling.  
-🔲Add a paddle that can be moved left and right via player inputs.  
-🔲Add a ball that will bounce off of the paddle, walls, and ceiling.  
-🔲Add square game objects (bricks) into the top of the game space.  
-🔲Enable the ball to bounce off of the bricks. When the ball bounces, the brick should disappear.  
-🔲Breaking a brick should add to the player’s score.  
-🔲The ball’s speed should increase as bricks are broken.  
-🔲The score should be displayed, as well as a life counter. The player starts with three lives. If the player misses the ball, a life should be subtracted. When all lives are used, the game ends.  
+✔Create a game space with walls and a ceiling.  
+✔Add a paddle that can be moved left and right via player inputs.  
+✔Add a ball that will bounce off of the paddle, walls, and ceiling.  
+✔Add square game objects (bricks) into the top of the game space.  
+✔Enable the ball to bounce off of the bricks. When the ball bounces, the brick should disappear.  
+✔Breaking a brick should add to the player’s score.  
+✔The ball’s speed should increase as bricks are broken.  
+✔The score should be displayed, as well as a life counter. The player starts with three lives. If the player misses the ball, a life should be subtracted. When all lives are used, the game ends.  
 
 
+
+#### ✨ Possible Features to Add
+- Power-ups (multi-ball, wider paddle, lasers)  
+- Sound effects and background music  
+- Level transitions or multiple brick layouts  
+- Brick hit animations or particle effects  
+- Combo system   
+- Paddle control via mouse input
+- Custom Sprites for visuals
+- Mobile Support
 
 ---
 
