@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://7aqsxbip0nta" path="res://scenes/game_over.tscn" id="7_q8mjp"]
 
 [node name="GameManager" type="Node2D"]
-position = Vector2(0, 3)
 script = ExtResource("1_hwd4i")
 paddle = ExtResource("3_udu3i")
 
