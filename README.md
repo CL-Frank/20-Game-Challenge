@@ -12,7 +12,7 @@ Each game will be listed below with a short description, tech stack used, and a 
 |--------|---------------|------------|
 | 1      | Flappy Bird           | ✅ Completed |
 | 2      | Breakout           | ✅ Completed |
-| 3      | Frogger           | 🔲 Planned |
+| 3      | Frogger           | 🛠️ In Progress |
 | 4      | Indy 500           | 🔲 Planned |
 | 5      | Conway's Game of Life           | 🔲 Planned |
 | More To Come|
@@ -52,7 +52,7 @@ A simple clone of the classic Flappy Bird game. Tap or click to keep the bird in
 
 ---
 ### 🧱 Game 2: Breakout Clone
-A classic Breakout-style game where you control a paddle to bounce a ball and destroy bricks.  
+The 1981 classic arcade video game where players guide frogs across roads and rivers
 The original game had eight rows of 16 bricks each, though you can change the number of bricks depending on the size of the game space.
 **Things I learned:** 
 - Making use of signals to control game states and conditions across scenes
@@ -85,6 +85,36 @@ The original game had eight rows of 16 bricks each, though you can change the nu
 - Paddle control via mouse input
 - Custom Sprites for visuals
 - Mobile Support
+
+
+---
+### 🧱 Game 3: Frogger Clone
+The 1981 classic arcade video game where players guide frogs across roads and rivers. The designer, Akira Hashimoto, came up with the idea for the game after he saw a frog trying to cross the road while Hashimoto was stopped at a red light.
+Made of 5 road lanes, 5 water lanes, many obstacles and the goal of reaching 5 homes at the end!
+**Things I learned:** 
+- Making use of signals to control game states and conditions across scenes
+- Controlling rigid bodies  
+**Tech Stack**: Godot Engine   
+
+**Source Code**: [Game 3: Frogger](./game_3_frogger/)  
+**Date Completed** : 
+
+**Play here**: **  
+
+#### Challenge Goals
+Make and animate a frog. The frog can move up, down, left, or right. Instead of moving smoothly, the frog should hop each time a button is pressed. Each button press will move the frog one tile.
+Make the play area. The area is divided into lanes (rows). There is a safe lane, five lanes of road, another safe lane, and five lanes of water. Finally, there are five lillypads on the top of the screen.
+Make and animate the game obstacles. All obstacles and platforms will cross the screen horizontally. Obstacles will alternate direction for each lane.
+The road has cars. Each lane has a unique pattern of cars, and speeds vary between lanes.
+The river has alternating lanes of logs and turtles. Some turtles can dive underwater periodically. Some logs are actually crocodiles, which can eat the player if the player lands in their open mouth.
+The player should die if:
+they leave the screen
+they are hit by a car
+they fall in the water (frogs can drown, apparently)
+they are eaten by a wild animal
+If the player reaches a lillypad on the top of the screen, the lillypad will be “full.” When all five lillypads are full, the level is complete.
+Add a UI with a life counter and a score counter.
+Create an animation or use a particle effect to make the frog’s death extra juicy!
 
 ---
 
