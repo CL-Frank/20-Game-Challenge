@@ -16,7 +16,6 @@ func _process(delta: float) -> void:
 	var is_drowning = water_collisions > 0 && platform_collisions <= 0
 	if is_drowning && !was_drowning_last_frame:
 		drowned.emit()
-		print("DROWNED")
 	was_drowning_last_frame = is_drowning
 
 func _on_water_detector_body_entered(body: Node2D) -> void:

@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name PlayerMover
 var player:Node2D = null
 
 # Called when the node enters the scene tree for the first time.
@@ -14,8 +14,6 @@ func _process(delta: float) -> void:
 
 func _on_player_detector_area_entered(area: Area2D) -> void:
 	player = area
-	if player != null:
-		print("player found")
 
 
 func _on_player_detector_area_exited(area: Area2D) -> void:

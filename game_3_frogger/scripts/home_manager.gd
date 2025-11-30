@@ -1,6 +1,6 @@
 extends Node
 
-var current_value = 4
+var current_value = 0
 
 signal value_changed(value:int)
 

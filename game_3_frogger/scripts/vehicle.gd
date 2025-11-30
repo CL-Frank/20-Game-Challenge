@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name Vehicle
 @export var texture:Texture2D
 @export var speed:Vector2
 @export var rotation_offset: Vector2

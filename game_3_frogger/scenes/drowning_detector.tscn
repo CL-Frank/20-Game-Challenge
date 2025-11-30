@@ -17,7 +17,7 @@ shape = SubResource("RectangleShape2D_bbmuv")
 
 [node name="PlatformDetector" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 4
+collision_mask = 8
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="PlatformDetector"]
 shape = SubResource("RectangleShape2D_bbmuv")

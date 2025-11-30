@@ -17,7 +17,8 @@ func _on_lives_display_value_changed(value: int) -> void:
 
 
 func _on_home_frog_arrived() -> void:
-	$HomeManager.incrementValue(1)
+	$Homes/HomeManager.incrementValue(1)
+	$player.respawn()
 
 
 func _on_home_manager_value_changed(value: int) -> void:

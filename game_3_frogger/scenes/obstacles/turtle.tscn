@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://f4bjtts6ek0u"]
+
+[ext_resource type="Script" uid="uid://bdwf7xlqfiupb" path="res://scripts/turtle.gd" id="1_f2r5w"]
+[ext_resource type="Script" uid="uid://gxj8s1q12sg4" path="res://scripts/AutoMover2D.gd" id="2_f2r5w"]
+[ext_resource type="Script" uid="uid://bctbql6xv1tbd" path="res://scripts/VisibilityOffset2D.gd" id="3_4lu78"]
+[ext_resource type="PackedScene" uid="uid://dx3kyad1djj7x" path="res://scenes/player_mover.tscn" id="4_bc3fs"]
+[ext_resource type="Texture2D" uid="uid://by1bg4jrm1wkv" path="res://assets/sprites/DEBUG.png" id="5_86a57"]
+[ext_resource type="Texture2D" uid="uid://7slgoqu8mfqg" path="res://assets/sprites/world_sprites.png" id="6_f2r5w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjit2"]
+size = Vector2(15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lu78"]
+atlas = ExtResource("6_f2r5w")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_udfqq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lu78")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="turtle" type="Node2D"]
+script = ExtResource("1_f2r5w")
+
+[node name="AutoMover2D" type="Node" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("2_f2r5w")
+target = NodePath("..")
+metadata/_custom_type_script = "uid://gxj8s1q12sg4"
+
+[node name="VisibilityOffset2D" type="VisibleOnScreenNotifier2D" parent="." node_paths=PackedStringArray("target")]
+rect = Rect2(0, 0, 16, 16)
+script = ExtResource("3_4lu78")
+target = NodePath("..")
+metadata/_custom_type_script = "uid://bctbql6xv1tbd"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="PlayerMover" parent="." instance=ExtResource("4_bc3fs")]
+
+[node name="Templates" type="Node2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Templates"]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_cjit2")
+
+[node name="Sprite2D" type="Sprite2D" parent="Templates"]
+texture = ExtResource("5_86a57")
+centered = false
+region_rect = Rect2(112, 0, 16, 16)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Templates"]
+sprite_frames = SubResource("SpriteFrames_udfqq")
+centered = false
+
+[connection signal="moved" from="AutoMover2D" to="PlayerMover" method="move_player"]

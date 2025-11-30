@@ -29,9 +29,9 @@ func move_player(dir):
 	ray.force_raycast_update()
 	
 	if !ray.is_colliding():
-		rotation = dir.angle() - PI/2
-		position += dir * 16
+		sprite.rotation = dir.angle() + PI/2
 		sprite.play("jump")
+		position += dir * 16
 		moving = true
 		await get_tree().create_timer(0.3).timeout
 		sprite.stop()
@@ -41,11 +41,16 @@ func died():
 	print("PLAYER DIED")
 	can_move = false
 	$BloodSplatter.emitting = true
+	$AnimatedSprite2D.visible = false
 	await $BloodSplatter.finished
 	player_died.emit()
+	respawn()
+	$AnimatedSprite2D.visible = true	
+	can_move = true
+	
+func respawn():
 	position = respawn_location.position
 	position = position.snapped(Vector2.ONE * 16) + Vector2.ONE * 8
-	can_move = true
 	
 
 

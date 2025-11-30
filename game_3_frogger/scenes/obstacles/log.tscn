@@ -24,6 +24,7 @@ target = NodePath("..")
 metadata/_custom_type_script = "uid://bctbql6xv1tbd"
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
 
 [node name="PlayerMover" parent="." instance=ExtResource("4_cq5k7")]
 

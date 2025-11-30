@@ -15,6 +15,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
 position = Vector2(8, 9)
 shape = SubResource("RectangleShape2D_fqbx5")
+debug_color = Color(0, 0.6, 0.69803923, 0)
 
 [connection signal="area_entered" from="PlayerDetector" to="." method="_on_player_detector_area_entered"]
 [connection signal="area_exited" from="PlayerDetector" to="." method="_on_player_detector_area_exited"]

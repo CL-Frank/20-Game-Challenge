@@ -9,7 +9,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_507ja"]
 size = Vector2(16, 16)
 
-[node name="platform" type="Node2D" groups=["platform"]]
+[node name="platform" type="Node2D"]
 script = ExtResource("1_platform")
 length = 3
 
@@ -25,6 +25,7 @@ target = NodePath("..")
 metadata/_custom_type_script = "uid://bctbql6xv1tbd"
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
 
 [node name="PlayerMover" parent="." instance=ExtResource("5_u7qrw")]
 

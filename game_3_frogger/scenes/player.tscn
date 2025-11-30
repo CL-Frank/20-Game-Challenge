@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://csvch5ae6uk5j"]
+[gd_scene load_steps=10 format=3 uid="uid://csvch5ae6uk5j"]
 
 [ext_resource type="Script" uid="uid://cmkily3nembq3" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://7slgoqu8mfqg" path="res://assets/sprites/world_sprites.png" id="2_g2els"]
@@ -8,10 +8,6 @@
 atlas = ExtResource("2_g2els")
 region = Rect2(0, 48, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
-atlas = ExtResource("2_g2els")
-region = Rect2(16, 48, 16, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
 atlas = ExtResource("2_g2els")
 region = Rect2(32, 48, 16, 16)
@@ -20,10 +16,6 @@ region = Rect2(32, 48, 16, 16)
 atlas = ExtResource("2_g2els")
 region = Rect2(96, 48, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ur7pv"]
-atlas = ExtResource("2_g2els")
-region = Rect2(112, 48, 16, 16)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_ur7pv"]
 animations = [{
 "frames": [{
@@ -31,32 +23,30 @@ animations = [{
 "texture": SubResource("AtlasTexture_g2els")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qhqgy")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_dqkch")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_smehm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ur7pv")
 }],
 "loop": true,
 "name": &"jump",
-"speed": 22.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(9, 9)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
+size = Vector2(9, 9)
+
 [node name="player" type="Area2D" groups=["player"]]
-collision_layer = 2
-collision_mask = 16
+collision_mask = 0
 script = ExtResource("1_3vyb7")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(0, 16)
+target_position = Vector2(0, -16)
+collision_mask = 2
+collide_with_areas = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = 3.1415927
@@ -81,10 +71,14 @@ color = Color(1, 0, 0, 1)
 [node name="DrowningDetector" parent="." instance=ExtResource("3_qhqgy")]
 
 [node name="DamageSourceDetector" type="Area2D" parent="."]
+collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageSourceDetector"]
 shape = SubResource("RectangleShape2D_qhqgy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dqkch")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="drowned" from="DrowningDetector" to="." method="_on_drowning_detector_drowned"]

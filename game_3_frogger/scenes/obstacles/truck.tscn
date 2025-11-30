@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://dsmwvknprjcjo"]
+
+[ext_resource type="Script" uid="uid://bts2bl8iqvyjf" path="res://scripts/vehicle.gd" id="1_bh7du"]
+[ext_resource type="Texture2D" uid="uid://7slgoqu8mfqg" path="res://assets/sprites/world_sprites.png" id="2_hldv3"]
+[ext_resource type="PackedScene" uid="uid://b4konmltpytib" path="res://scenes/killzone.tscn" id="3_bh7du"]
+[ext_resource type="Script" uid="uid://gxj8s1q12sg4" path="res://scripts/AutoMover2D.gd" id="4_bh7du"]
+[ext_resource type="Script" uid="uid://bctbql6xv1tbd" path="res://scripts/VisibilityOffset2D.gd" id="5_0xl1e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1n0o7"]
+size = Vector2(16, 15)
+
+[node name="truck" type="Node2D"]
+script = ExtResource("1_bh7du")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_hldv3")
+centered = false
+region_enabled = true
+region_rect = Rect2(96, 32, 32, 16)
+
+[node name="Killzone" parent="." instance=ExtResource("3_bh7du")]
+position = Vector2(16, 8)
+scale = Vector2(1.6628926, 0.7523498)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+shape = SubResource("RectangleShape2D_1n0o7")
+
+[node name="AutoMover2D" type="Node" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("4_bh7du")
+target = NodePath("..")
+metadata/_custom_type_script = "uid://gxj8s1q12sg4"
+
+[node name="VisibilityOffset2D" type="VisibleOnScreenNotifier2D" parent="." node_paths=PackedStringArray("target")]
+rect = Rect2(0, 0, 32, 16)
+script = ExtResource("5_0xl1e")
+target = NodePath("..")
+metadata/_custom_type_script = "uid://bctbql6xv1tbd"

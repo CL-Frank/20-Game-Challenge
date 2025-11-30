@@ -1,13 +1,14 @@
 @tool
 extends Platform
-class_name Log
-const LOG_END = preload("uid://wr3bg5u5rdby")
-const LOG_MIDDLE = preload("uid://llj3bsqplx1k")
-const LOG_START = preload("uid://csmbjoaboh7my")
-	
-		
+class_name Croc
+
+const CROC_HEAD = preload("uid://bo2rbkc73k34y")
+const CROC_TAIL = preload("uid://bpdwhxermmxv3")
+const CROC_BODY = preload("uid://ckxmerhn70xp7")
+
+
 func setupLength():
-	
+	length = 3
 	
 	if $Area2D:
 		for child in $Area2D.get_children():
@@ -22,21 +23,27 @@ func setupLength():
 		
 		if !flip_h:
 			if item == 1:
-				sprite.texture = LOG_START
+				sprite.texture = CROC_TAIL
 			elif item == length:
-				sprite.texture = LOG_END
+				sprite.texture = CROC_HEAD
+				var killzone = $Templates/Killzone.duplicate() as Area2D
+				killzone.position += (item - 1) * tile_offset
+				$Area2D.add_child(killzone)
 			else:
-				sprite.texture = LOG_MIDDLE
+				sprite.texture = CROC_BODY
 			
 		else:
 			sprite.flip_h = true
 			if item == 1:
-				sprite.texture = LOG_START
+				sprite.texture = CROC_TAIL
 				
 			elif item == length:
-				sprite.texture = LOG_END
+				sprite.texture = CROC_HEAD
+				var killzone = $Templates/Killzone.duplicate() as Area2D
+				$Area2D.add_child(killzone)
+				killzone.position += (item + 1) * tile_offset
 			else:
-				sprite.texture = LOG_MIDDLE
+				sprite.texture = CROC_BODY
 			
 		sprite.position = (item - 1) * tile_offset
 		shape.position += (item - 1) * tile_offset

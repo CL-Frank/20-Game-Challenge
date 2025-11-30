@@ -3,10 +3,5 @@ extends Vehicle
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	position += speed * direction
-	pass
+	$Sprite2D.region_enabled = true
+	$Sprite2D.region_rect = Rect2(96.0,32.0,32.0,16)

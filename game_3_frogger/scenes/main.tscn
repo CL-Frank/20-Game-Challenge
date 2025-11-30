@@ -1,15 +1,20 @@
-[gd_scene load_steps=14 format=4 uid="uid://dcotsmnjpe71h"]
+[gd_scene load_steps=19 format=4 uid="uid://dcotsmnjpe71h"]
 
 [ext_resource type="Texture2D" uid="uid://7slgoqu8mfqg" path="res://assets/sprites/world_sprites.png" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://csvch5ae6uk5j" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://5hfwx1kyrcmu" path="res://scripts/level.gd" id="1_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://bllprl0d21w67" path="res://assets/sprites/Blue_Racer.png" id="4_jyhfs"]
-[ext_resource type="PackedScene" uid="uid://d02w21hthao5n" path="res://scenes/vehicle.tscn" id="4_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://d02w21hthao5n" path="res://scenes/obstacles/vehicle.tscn" id="4_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://dsmwvknprjcjo" path="res://scenes/obstacles/truck.tscn" id="5_a8y0u"]
+[ext_resource type="Texture2D" uid="uid://barq1jhox8o5n" path="res://assets/sprites/Tractor.png" id="5_jkv2x"]
+[ext_resource type="Texture2D" uid="uid://b633n787opn51" path="res://assets/sprites/Yellow_Racer.png" id="5_trceg"]
+[ext_resource type="PackedScene" uid="uid://f4bjtts6ek0u" path="res://scenes/obstacles/turtle.tscn" id="6_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://cc2bd4us6sty5" path="res://scenes/home.tscn" id="6_o6xl0"]
-[ext_resource type="PackedScene" uid="uid://c5id1jwxcwpks" path="res://scenes/log.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://c5id1jwxcwpks" path="res://scenes/obstacles/log.tscn" id="6_tefeu"]
 [ext_resource type="Texture2D" uid="uid://bj1olxgk4puos" path="res://assets/sprites/LilyPad.png" id="6_tipki"]
 [ext_resource type="Script" uid="uid://cwshnu2qmuywx" path="res://scripts/image_display.gd" id="7_o6xl0"]
 [ext_resource type="Texture2D" uid="uid://bg7ovahgw08ed" path="res://assets/sprites/Frog_Life.png" id="9_85g3d"]
+[ext_resource type="PackedScene" uid="uid://decw3mycl4y5k" path="res://scenes/obstacles/croc.tscn" id="10_jbj1t"]
 [ext_resource type="Script" uid="uid://dp75fi446cmcp" path="res://scripts/home_manager.gd" id="11_eb6dy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0wfyh"]
@@ -36,17 +41,33 @@ texture = ExtResource("1_0wfyh")
 5:2/0 = 0
 6:2/0 = 0
 7:2/0 = 0
+8:1/0 = 0
+8:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:0/0 = 0
+8:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+9:0/0 = 0
+9:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+9:1/0 = 0
+9:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:0/0 = 0
+1:4/0 = 0
+1:4/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:4/0 = 0
+2:4/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:4/0 = 0
+3:4/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_jyhfs"]
 physics_layer_0/collision_layer = 4
 physics_layer_0/collision_mask = 0
+physics_layer_1/collision_layer = 2
 sources/0 = SubResource("TileSetAtlasSource_0wfyh")
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_ya4ey")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAAAAgAAAAEAAAAAAAAAAkAAAAEAAAAAAAAAAoAAAAEAAAAAAAAAAsAAAAEAAAAAAAAAAwAAAAEAAAAAAABAAgAAAAEAAAAAAABAAkAAAAEAAAAAAABAAoAAAAEAAAAAAABAAsAAAAEAAAAAAABAAwAAAAEAAAAAAACAAgAAAAEAAAAAAACAAkAAAAEAAAAAAACAAoAAAAEAAAAAAACAAsAAAAEAAAAAAACAAwAAAAEAAAAAAADAAgAAAAEAAAAAAADAAkAAAAEAAAAAAADAAoAAAAEAAAAAAADAAsAAAAEAAAAAAADAAwAAAAEAAAAAAAEAAgAAAAEAAAAAAAEAAkAAAAEAAAAAAAEAAoAAAAEAAAAAAAEAAsAAAAEAAAAAAAEAAwAAAAEAAAAAAAFAAgAAAAEAAAAAAAFAAkAAAAEAAAAAAAFAAoAAAAEAAAAAAAFAAsAAAAEAAAAAAAFAAwAAAAEAAAAAAAGAAgAAAAEAAAAAAAGAAkAAAAEAAAAAAAGAAoAAAAEAAAAAAAGAAsAAAAEAAAAAAAGAAwAAAAEAAAAAAAHAAgAAAAEAAAAAAAHAAkAAAAEAAAAAAAHAAoAAAAEAAAAAAAHAAsAAAAEAAAAAAAHAAwAAAAEAAAAAAAIAAgAAAAEAAAAAAAIAAkAAAAEAAAAAAAIAAoAAAAEAAAAAAAIAAsAAAAEAAAAAAAIAAwAAAAEAAAAAAAJAAgAAAAEAAAAAAAJAAkAAAAEAAAAAAAJAAoAAAAEAAAAAAAJAAsAAAAEAAAAAAAJAAwAAAAEAAAAAAAKAAgAAAAEAAAAAAAKAAkAAAAEAAAAAAAKAAoAAAAEAAAAAAAKAAsAAAAEAAAAAAAKAAwAAAAEAAAAAAALAAgAAAAEAAAAAAALAAkAAAAEAAAAAAALAAoAAAAEAAAAAAALAAsAAAAEAAAAAAALAAwAAAAEAAAAAAAMAAgAAAAEAAAAAAAMAAkAAAAEAAAAAAAMAAoAAAAEAAAAAAAMAAsAAAAEAAAAAAAMAAwAAAAEAAAAAAAAAA0AAAAAAAAAAAABAA0AAAABAAAAAAACAA0AAAAAAAAAAAADAA0AAAAAAAAAAAAEAA0AAAAAAAAAAAAFAA0AAAAAAAAAAAAGAA0AAAAAAAAAAAAHAA0AAAAAAAAAAAAIAA0AAAAAAAAAAAAJAA0AAAAAAAAAAAAKAA0AAAAAAAAAAAALAA0AAAAAAAAAAAAMAA0AAAAAAAAAAAAAAAEAAAABAAAAAAAAAAIAAAACAAAAAAAAAAMAAAACAAAAAAAAAAQAAAACAAAAAAAAAAUAAAACAAAAAAAAAAYAAAACAAAAAAABAAEAAAAAAAAAAAABAAIAAAACAAAAAAABAAMAAAACAAAAAAABAAQAAAACAAAAAAABAAUAAAACAAAAAAABAAYAAAACAAAAAAACAAEAAAACAAAAAAACAAIAAAACAAAAAAACAAMAAAACAAAAAAACAAQAAAACAAAAAAACAAUAAAACAAAAAAACAAYAAAACAAAAAAADAAEAAAAAAAAAAAADAAIAAAACAAAAAAADAAMAAAACAAAAAAADAAQAAAACAAAAAAADAAUAAAACAAAAAAADAAYAAAACAAAAAAAEAAEAAAACAAAAAAAEAAIAAAACAAAAAAAEAAMAAAACAAAAAAAEAAQAAAACAAAAAAAEAAUAAAACAAAAAAAEAAYAAAACAAAAAAAFAAEAAAAAAAAAAAAFAAIAAAACAAAAAAAFAAMAAAACAAAAAAAFAAQAAAACAAAAAAAFAAUAAAACAAAAAAAFAAYAAAACAAAAAAAGAAEAAAACAAAAAAAGAAIAAAACAAAAAAAGAAMAAAACAAAAAAAGAAQAAAACAAAAAAAGAAUAAAACAAAAAAAGAAYAAAACAAAAAAAHAAEAAAABAAAAAAAHAAIAAAACAAAAAAAHAAMAAAACAAAAAAAHAAQAAAACAAAAAAAHAAUAAAACAAAAAAAHAAYAAAACAAAAAAAIAAEAAAACAAAAAAAIAAIAAAACAAAAAAAIAAMAAAACAAAAAAAIAAQAAAACAAAAAAAIAAUAAAACAAAAAAAIAAYAAAACAAAAAAAJAAEAAAAAAAAAAAAJAAIAAAACAAAAAAAJAAMAAAACAAAAAAAJAAQAAAACAAAAAAAJAAUAAAACAAAAAAAJAAYAAAACAAAAAAAKAAEAAAACAAAAAAAKAAIAAAACAAAAAAAKAAMAAAACAAAAAAAKAAQAAAACAAAAAAAKAAUAAAACAAAAAAAKAAYAAAACAAAAAAALAAEAAAAAAAAAAAALAAIAAAACAAAAAAALAAMAAAACAAAAAAALAAQAAAACAAAAAAALAAUAAAACAAAAAAALAAYAAAACAAAAAAAMAAEAAAABAAAAAAAMAAIAAAACAAAAAAAMAAMAAAACAAAAAAAMAAQAAAACAAAAAAAMAAUAAAACAAAAAAAMAAYAAAACAAAAAAAAAAcAAAAAAAAAAAABAAcAAAAAAAAAAAACAAcAAAAAAAAAAAADAAcAAAAAAAAAAAAEAAcAAAAAAAAAAAAFAAcAAAAAAAAAAAAGAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAAIAAcAAAAAAAAAAAAJAAcAAAAAAAAAAAAKAAcAAAABAAAAAAALAAcAAAAAAAAAAAAMAAcAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAABAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAgAAAAEAAAAAAAAAAkAAAAEAAAAAAAAAAoAAAAEAAAAAAAAAAsAAAAEAAAAAAAAAAwAAAAEAAAAAAABAAgAAAAEAAAAAAABAAkAAAAEAAAAAAABAAoAAAAEAAAAAAABAAsAAAAEAAAAAAABAAwAAAAEAAAAAAACAAgAAAAEAAAAAAACAAkAAAAEAAAAAAACAAoAAAAEAAAAAAACAAsAAAAEAAAAAAACAAwAAAAEAAAAAAADAAgAAAAEAAAAAAADAAkAAAAEAAAAAAADAAoAAAAEAAAAAAADAAsAAAAEAAAAAAADAAwAAAAEAAAAAAAEAAgAAAAEAAAAAAAEAAkAAAAEAAAAAAAEAAoAAAAEAAAAAAAEAAsAAAAEAAAAAAAEAAwAAAAEAAAAAAAFAAgAAAAEAAAAAAAFAAkAAAAEAAAAAAAFAAoAAAAEAAAAAAAFAAsAAAAEAAAAAAAFAAwAAAAEAAAAAAAGAAgAAAAEAAAAAAAGAAkAAAAEAAAAAAAGAAoAAAAEAAAAAAAGAAsAAAAEAAAAAAAGAAwAAAAEAAAAAAAHAAgAAAAEAAAAAAAHAAkAAAAEAAAAAAAHAAoAAAAEAAAAAAAHAAsAAAAEAAAAAAAHAAwAAAAEAAAAAAAIAAgAAAAEAAAAAAAIAAkAAAAEAAAAAAAIAAoAAAAEAAAAAAAIAAsAAAAEAAAAAAAIAAwAAAAEAAAAAAAJAAgAAAAEAAAAAAAJAAkAAAAEAAAAAAAJAAoAAAAEAAAAAAAJAAsAAAAEAAAAAAAJAAwAAAAEAAAAAAAKAAgAAAAEAAAAAAAKAAkAAAAEAAAAAAAKAAoAAAAEAAAAAAAKAAsAAAAEAAAAAAAKAAwAAAAEAAAAAAALAAgAAAAEAAAAAAALAAkAAAAEAAAAAAALAAoAAAAEAAAAAAALAAsAAAAEAAAAAAALAAwAAAAEAAAAAAAMAAgAAAAEAAAAAAAMAAkAAAAEAAAAAAAMAAoAAAAEAAAAAAAMAAsAAAAEAAAAAAAMAAwAAAAEAAAAAAAAAA0AAAAAAAAAAAABAA0AAAABAAAAAAACAA0AAAAAAAAAAAADAA0AAAAAAAAAAAAEAA0AAAAAAAAAAAAFAA0AAAAAAAAAAAAGAA0AAAAAAAAAAAAHAA0AAAAAAAAAAAAIAA0AAAAAAAAAAAAJAA0AAAAAAAAAAAAKAA0AAAAAAAAAAAALAA0AAAAAAAAAAAAMAA0AAAAAAAAAAAAAAAEAAAAIAAAAAAAAAAIAAAACAAAAAAAAAAMAAAACAAAAAAAAAAQAAAACAAAAAAAAAAUAAAACAAAAAAAAAAYAAAACAAAAAAABAAEAAAAJAAAAAAABAAIAAAACAAAAAAABAAMAAAACAAAAAAABAAQAAAACAAAAAAABAAUAAAACAAAAAAABAAYAAAACAAAAAAACAAEAAAACAAAAAAACAAIAAAACAAAAAAACAAMAAAACAAAAAAACAAQAAAACAAAAAAACAAUAAAACAAAAAAACAAYAAAACAAAAAAADAAEAAAAIAAEAAAADAAIAAAACAAAAAAADAAMAAAACAAAAAAADAAQAAAACAAAAAAADAAUAAAACAAAAAAADAAYAAAACAAAAAAAEAAEAAAACAAAAAAAEAAIAAAACAAAAAAAEAAMAAAACAAAAAAAEAAQAAAACAAAAAAAEAAUAAAACAAAAAAAEAAYAAAACAAAAAAAFAAEAAAAIAAEAAAAFAAIAAAACAAAAAAAFAAMAAAACAAAAAAAFAAQAAAACAAAAAAAFAAUAAAACAAAAAAAFAAYAAAACAAAAAAAGAAEAAAACAAAAAAAGAAIAAAACAAAAAAAGAAMAAAACAAAAAAAGAAQAAAACAAAAAAAGAAUAAAACAAAAAAAGAAYAAAACAAAAAAAHAAEAAAAIAAEAAAAHAAIAAAACAAAAAAAHAAMAAAACAAAAAAAHAAQAAAACAAAAAAAHAAUAAAACAAAAAAAHAAYAAAACAAAAAAAIAAEAAAACAAAAAAAIAAIAAAACAAAAAAAIAAMAAAACAAAAAAAIAAQAAAACAAAAAAAIAAUAAAACAAAAAAAIAAYAAAACAAAAAAAJAAEAAAAIAAEAAAAJAAIAAAACAAAAAAAJAAMAAAACAAAAAAAJAAQAAAACAAAAAAAJAAUAAAACAAAAAAAJAAYAAAACAAAAAAAKAAEAAAACAAAAAAAKAAIAAAACAAAAAAAKAAMAAAACAAAAAAAKAAQAAAACAAAAAAAKAAUAAAACAAAAAAAKAAYAAAACAAAAAAALAAEAAAAJAAEAAAALAAIAAAACAAAAAAALAAMAAAACAAAAAAALAAQAAAACAAAAAAALAAUAAAACAAAAAAALAAYAAAACAAAAAAAMAAEAAAAIAAAAAAAMAAIAAAACAAAAAAAMAAMAAAACAAAAAAAMAAQAAAACAAAAAAAMAAUAAAACAAAAAAAMAAYAAAACAAAAAAAAAAcAAAAAAAAAAAABAAcAAAAAAAAAAAACAAcAAAAAAAAAAAADAAcAAAAAAAAAAAAEAAcAAAAAAAAAAAAFAAcAAAAAAAAAAAAGAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAAIAAcAAAAAAAAAAAAJAAcAAAAAAAAAAAAKAAcAAAABAAAAAAALAAcAAAAAAAAAAAAMAAcAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAABAAAAAAACAAAAAAAIAAAAAAADAAAAAAABAAAAAAAEAAAAAAAIAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAIAAAAAAAHAAAAAAABAAAAAAAIAAAAAAAIAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAIAAAAAAALAAAAAAAAAAAAAAAMAAAAAAABAAAAAAABAA4AAAACAAQAAAACAA4AAAACAAQAAAADAA4AAAACAAQAAAAEAA4AAAACAAQAAAAFAA4AAAACAAQAAAAGAA4AAAACAAQAAAAHAA4AAAACAAQAAAAIAA4AAAACAAQAAAAJAA4AAAACAAQAAAAKAA4AAAACAAQAAAALAA4AAAACAAQAAAAMAA4AAAADAAQAAAAAAA4AAAABAAQAAAA=")
 tile_set = SubResource("TileSet_jyhfs")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -57,60 +78,290 @@ position = Vector2(0, 192)
 
 [node name="Vehicle" parent="Lane1" instance=ExtResource("4_tbgi4")]
 position = Vector2(26, 0)
-speed = Vector2(35, 0)
-rotation_offset = Vector2(-224, 0)
+speed = Vector2(30, 0)
+rotation_offset = Vector2(-270, 0)
 
 [node name="Vehicle2" parent="Lane1" instance=ExtResource("4_tbgi4")]
 position = Vector2(75, 0)
-speed = Vector2(35, 0)
-rotation_offset = Vector2(-224, 0)
+speed = Vector2(30, 0)
+rotation_offset = Vector2(-270, 0)
 
 [node name="Vehicle3" parent="Lane1" instance=ExtResource("4_tbgi4")]
 position = Vector2(130, 0)
-speed = Vector2(35, 0)
-rotation_offset = Vector2(-224, 0)
-
-[node name="Vehicle4" parent="Lane1" instance=ExtResource("4_tbgi4")]
-position = Vector2(182, 0)
-speed = Vector2(35, 0)
-rotation_offset = Vector2(-224, 0)
+speed = Vector2(30, 0)
+rotation_offset = Vector2(-270, 0)
 
 [node name="Lane2" type="Node2D" parent="."]
 position = Vector2(208, 176)
 
-[node name="Vehicle" parent="Lane2" instance=ExtResource("4_tbgi4")]
+[node name="Vehicle2" parent="Lane2" instance=ExtResource("4_tbgi4")]
+position = Vector2(-50, 0)
 texture = ExtResource("4_jyhfs")
-speed = Vector2(-35, 0)
-rotation_offset = Vector2(100, 0)
+speed = Vector2(-45, 0)
+rotation_offset = Vector2(256, 0)
+flip_h = true
+
+[node name="Vehicle3" parent="Lane2" instance=ExtResource("4_tbgi4")]
+position = Vector2(-111, 0)
+texture = ExtResource("4_jyhfs")
+speed = Vector2(-45, 0)
+rotation_offset = Vector2(256, 0)
+flip_h = true
+
+[node name="Vehicle4" parent="Lane2" instance=ExtResource("4_tbgi4")]
+position = Vector2(-176, 0)
+texture = ExtResource("4_jyhfs")
+speed = Vector2(-45, 0)
+rotation_offset = Vector2(256, 0)
+flip_h = true
+
+[node name="Lane3" type="Node2D" parent="."]
+position = Vector2(0, 160)
+
+[node name="Tractor" parent="Lane3" instance=ExtResource("4_tbgi4")]
+position = Vector2(180, 0)
+texture = ExtResource("5_jkv2x")
+speed = Vector2(20, 0)
+rotation_offset = Vector2(-224, 0)
+flip_h = true
+
+[node name="Tractor2" parent="Lane3" instance=ExtResource("4_tbgi4")]
+position = Vector2(141, 0)
+texture = ExtResource("5_jkv2x")
+speed = Vector2(20, 0)
+rotation_offset = Vector2(-224, 0)
+flip_h = true
+
+[node name="Tractor3" parent="Lane3" instance=ExtResource("4_tbgi4")]
+position = Vector2(55, 0)
+texture = ExtResource("5_jkv2x")
+speed = Vector2(20, 0)
+rotation_offset = Vector2(-224, 0)
+flip_h = true
+
+[node name="Tractor4" parent="Lane3" instance=ExtResource("4_tbgi4")]
+position = Vector2(17, 0)
+texture = ExtResource("5_jkv2x")
+speed = Vector2(20, 0)
+rotation_offset = Vector2(-224, 0)
+flip_h = true
+
+[node name="Lane4" type="Node2D" parent="."]
+position = Vector2(208, 144)
+
+[node name="Vehicle3" parent="Lane4" instance=ExtResource("4_tbgi4")]
+position = Vector2(-126, 0)
+texture = ExtResource("5_trceg")
+speed = Vector2(-70, 0)
+rotation_offset = Vector2(256, 0)
+
+[node name="Vehicle4" parent="Lane4" instance=ExtResource("4_tbgi4")]
+position = Vector2(-26, 0)
+texture = ExtResource("5_trceg")
+speed = Vector2(-70, 0)
+rotation_offset = Vector2(256, 0)
+
+[node name="Lane5" type="Node2D" parent="."]
+position = Vector2(0, 128)
+
+[node name="truck" parent="Lane5" instance=ExtResource("5_a8y0u")]
+texture = ExtResource("1_0wfyh")
+speed = Vector2(12, 0)
+rotation_offset = Vector2(-240, 0)
+flip_h = true
+
+[node name="truck2" parent="Lane5" instance=ExtResource("5_a8y0u")]
+position = Vector2(37, 0)
+texture = ExtResource("1_0wfyh")
+speed = Vector2(12, 0)
+rotation_offset = Vector2(-240, 0)
+flip_h = true
+
+[node name="truck3" parent="Lane5" instance=ExtResource("5_a8y0u")]
+position = Vector2(110, 0)
+texture = ExtResource("1_0wfyh")
+speed = Vector2(12, 0)
+rotation_offset = Vector2(-240, 0)
+flip_h = true
+
+[node name="truck4" parent="Lane5" instance=ExtResource("5_a8y0u")]
+position = Vector2(145, 0)
+texture = ExtResource("1_0wfyh")
+speed = Vector2(12, 0)
+rotation_offset = Vector2(-240, 0)
 flip_h = true
 
 [node name="Lane6" type="Node2D" parent="."]
-position = Vector2(0, 80)
+position = Vector2(0, 96)
 
 [node name="log" parent="Lane6" instance=ExtResource("6_tefeu")]
+position = Vector2(38, 0)
 speed = Vector2(20, 0)
-rotation_offset = Vector2(-240, 0)
-length = 5
+rotation_offset = Vector2(-336, 0)
+length = 4
+
+[node name="log3" parent="Lane6" instance=ExtResource("6_tefeu")]
+position = Vector2(-71, 0)
+speed = Vector2(20, 0)
+rotation_offset = Vector2(-336, 0)
+length = 4
+
+[node name="log2" parent="Lane6" instance=ExtResource("6_tefeu")]
+position = Vector2(142, 0)
+speed = Vector2(20, 0)
+rotation_offset = Vector2(-336, 0)
+length = 4
 
 [node name="Lane7" type="Node2D" parent="."]
-position = Vector2(208, 64)
+position = Vector2(208, 80)
 
 [node name="log" parent="Lane7" instance=ExtResource("6_tefeu")]
 flip_h = true
-speed = Vector2(-20, 0)
+speed = Vector2(-30, 0)
 rotation_offset = Vector2(240, 0)
+tile_offset = Vector2(-16, 0)
+length = 2
+
+[node name="log2" parent="Lane7" instance=ExtResource("6_tefeu")]
+position = Vector2(-62, 0)
+flip_h = true
+speed = Vector2(-30, 0)
+rotation_offset = Vector2(240, 0)
+tile_offset = Vector2(-16, 0)
+length = 2
+
+[node name="log3" parent="Lane7" instance=ExtResource("6_tefeu")]
+position = Vector2(-123, 0)
+flip_h = true
+speed = Vector2(-30, 0)
+rotation_offset = Vector2(240, 0)
+tile_offset = Vector2(-16, 0)
+length = 2
+
+[node name="log4" parent="Lane7" instance=ExtResource("6_tefeu")]
+position = Vector2(-180, 0)
+flip_h = true
+speed = Vector2(-30, 0)
+rotation_offset = Vector2(240, 0)
+tile_offset = Vector2(-16, 0)
+length = 2
+
+[node name="Lane8" type="Node2D" parent="."]
+position = Vector2(0, 64)
+
+[node name="turtle" parent="Lane8" instance=ExtResource("6_eb6dy")]
+flip_h = true
+speed = Vector2(25, 0)
+rotation_offset = Vector2(-224, 0)
+length = 1
+
+[node name="turtle2" parent="Lane8" instance=ExtResource("6_eb6dy")]
+position = Vector2(57, 0)
+flip_h = true
+speed = Vector2(25, 0)
+rotation_offset = Vector2(-224, 0)
+length = 1
+
+[node name="turtle3" parent="Lane8" instance=ExtResource("6_eb6dy")]
+position = Vector2(75, 0)
+flip_h = true
+speed = Vector2(25, 0)
+rotation_offset = Vector2(-224, 0)
+length = 1
+
+[node name="turtle4" parent="Lane8" instance=ExtResource("6_eb6dy")]
+position = Vector2(135, 0)
+flip_h = true
+speed = Vector2(25, 0)
+rotation_offset = Vector2(-224, 0)
+length = 1
+
+[node name="turtle5" parent="Lane8" instance=ExtResource("6_eb6dy")]
+position = Vector2(154, 0)
+flip_h = true
+speed = Vector2(25, 0)
+rotation_offset = Vector2(-224, 0)
+length = 1
+
+[node name="turtle6" parent="Lane8" instance=ExtResource("6_eb6dy")]
+position = Vector2(-19, 0)
+flip_h = true
+speed = Vector2(25, 0)
+rotation_offset = Vector2(-224, 0)
+length = 1
+
+[node name="Lane9" type="Node2D" parent="."]
+position = Vector2(208, 48)
+
+[node name="croc" parent="Lane9" instance=ExtResource("10_jbj1t")]
+position = Vector2(-183, 0)
+flip_h = true
+speed = Vector2(-16, 0)
+rotation_offset = Vector2(288, 0)
+tile_offset = Vector2(-16, 0)
 length = 3
 
-[node name="Home" parent="." instance=ExtResource("6_o6xl0")]
+[node name="log" parent="Lane9" instance=ExtResource("6_tefeu")]
+position = Vector2(-95, 0)
+flip_h = true
+speed = Vector2(-16, 0)
+rotation_offset = Vector2(288, 0)
+tile_offset = Vector2(-16, 0)
+length = 2
+
+[node name="log2" parent="Lane9" instance=ExtResource("6_tefeu")]
+position = Vector2(-32, 0)
+flip_h = true
+speed = Vector2(-16, 0)
+rotation_offset = Vector2(288, 0)
+tile_offset = Vector2(-16, 0)
+length = 2
+
+[node name="Lane10" type="Node2D" parent="."]
+position = Vector2(0, 32)
+
+[node name="turtle" parent="Lane10" instance=ExtResource("6_eb6dy")]
+flip_h = true
+speed = Vector2(40, 0)
+rotation_offset = Vector2(-345, 0)
+
+[node name="log" parent="Lane10" instance=ExtResource("6_tefeu")]
+position = Vector2(110, 0)
+speed = Vector2(30, 0)
+rotation_offset = Vector2(-256, 0)
+length = 3
+
+[node name="Homes" type="Node2D" parent="."]
+
+[node name="Home" parent="Homes" instance=ExtResource("6_o6xl0")]
 position = Vector2(32, 15)
 texture = ExtResource("6_tipki")
 
-[node name="Home2" parent="." instance=ExtResource("6_o6xl0")]
+[node name="Home3" parent="Homes" instance=ExtResource("6_o6xl0")]
+position = Vector2(64, 15)
+texture = ExtResource("6_tipki")
+
+[node name="Home4" parent="Homes" instance=ExtResource("6_o6xl0")]
+position = Vector2(96, 15)
+texture = ExtResource("6_tipki")
+
+[node name="Home5" parent="Homes" instance=ExtResource("6_o6xl0")]
+position = Vector2(128, 15)
+texture = ExtResource("6_tipki")
+
+[node name="Home6" parent="Homes" instance=ExtResource("6_o6xl0")]
+position = Vector2(160, 15)
+texture = ExtResource("6_tipki")
+
+[node name="Home2" parent="Homes" instance=ExtResource("6_o6xl0")]
 position = Vector2(32, 111)
 texture = ExtResource("6_tipki")
 
+[node name="HomeManager" type="Node" parent="Homes"]
+script = ExtResource("11_eb6dy")
+
 [node name="player" parent="." node_paths=PackedStringArray("respawn_location") instance=ExtResource("1_o5qli")]
-position = Vector2(50, 114)
+position = Vector2(95, 121)
 respawn_location = NodePath("../RespawnLocation")
 
 [node name="RespawnLocation" type="Marker2D" parent="."]
@@ -120,12 +371,14 @@ position = Vector2(95, 212)
 position = Vector2(8, 232)
 script = ExtResource("7_o6xl0")
 texture = ExtResource("9_85g3d")
+initial_value = 5
 
-[node name="HomeManager" type="Node" parent="."]
-script = ExtResource("11_eb6dy")
-
-[connection signal="frog_arrived" from="Home" to="." method="_on_home_frog_arrived"]
-[connection signal="frog_arrived" from="Home2" to="." method="_on_home_frog_arrived"]
+[connection signal="frog_arrived" from="Homes/Home" to="." method="_on_home_frog_arrived"]
+[connection signal="frog_arrived" from="Homes/Home3" to="." method="_on_home_frog_arrived"]
+[connection signal="frog_arrived" from="Homes/Home4" to="." method="_on_home_frog_arrived"]
+[connection signal="frog_arrived" from="Homes/Home5" to="." method="_on_home_frog_arrived"]
+[connection signal="frog_arrived" from="Homes/Home6" to="." method="_on_home_frog_arrived"]
+[connection signal="frog_arrived" from="Homes/Home2" to="." method="_on_home_frog_arrived"]
+[connection signal="value_changed" from="Homes/HomeManager" to="." method="_on_home_manager_value_changed"]
 [connection signal="player_died" from="player" to="." method="_on_player_player_died"]
 [connection signal="value_changed" from="LivesDisplay" to="." method="_on_lives_display_value_changed"]
-[connection signal="value_changed" from="HomeManager" to="." method="_on_home_manager_value_changed"]

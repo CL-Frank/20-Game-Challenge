@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://decw3mycl4y5k"]
+
+[ext_resource type="Script" uid="uid://djqwfskobx45j" path="res://scripts/croc.gd" id="1_ni20f"]
+[ext_resource type="Script" uid="uid://gxj8s1q12sg4" path="res://scripts/AutoMover2D.gd" id="2_w0p3n"]
+[ext_resource type="PackedScene" uid="uid://dx3kyad1djj7x" path="res://scenes/player_mover.tscn" id="3_w0p3n"]
+[ext_resource type="Script" uid="uid://bctbql6xv1tbd" path="res://scripts/VisibilityOffset2D.gd" id="5_iybwn"]
+[ext_resource type="PackedScene" uid="uid://b4konmltpytib" path="res://scenes/killzone.tscn" id="6_isha8"]
+[ext_resource type="Texture2D" uid="uid://by1bg4jrm1wkv" path="res://assets/sprites/DEBUG.png" id="7_w0p3n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2b24x"]
+size = Vector2(32, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bpm2q"]
+size = Vector2(15, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7oqo2"]
+size = Vector2(15, 15)
+
+[node name="croc" type="Node2D"]
+script = ExtResource("1_ni20f")
+length = 1
+
+[node name="AutoMover2D" type="Node" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("2_w0p3n")
+target = NodePath("..")
+metadata/_custom_type_script = "uid://gxj8s1q12sg4"
+
+[node name="PlayerMover" parent="." instance=ExtResource("3_w0p3n")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+centered = false
+region_enabled = true
+region_rect = Rect2(48, 16, 48, 16)
+
+[node name="VisibilityOffset2D" type="VisibleOnScreenNotifier2D" parent="." node_paths=PackedStringArray("target")]
+rect = Rect2(0, 0, 48, 16)
+script = ExtResource("5_iybwn")
+target = NodePath("..")
+metadata/_custom_type_script = "uid://bctbql6xv1tbd"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(16, 8)
+shape = SubResource("RectangleShape2D_2b24x")
+
+[node name="Templates" type="Node2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Templates"]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_bpm2q")
+
+[node name="Sprite2D" type="Sprite2D" parent="Templates"]
+texture = ExtResource("7_w0p3n")
+centered = false
+region_rect = Rect2(112, 0, 16, 16)
+
+[node name="Killzone" parent="Templates" instance=ExtResource("6_isha8")]
+position = Vector2(32, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Templates/Killzone"]
+position = Vector2(8, 0)
+shape = SubResource("RectangleShape2D_7oqo2")
+
+[connection signal="moved" from="AutoMover2D" to="PlayerMover" method="move_player"]
