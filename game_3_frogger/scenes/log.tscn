@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://c5id1jwxcwpks"]
+
+[ext_resource type="Script" uid="uid://4rdirwfrd2ec" path="res://scripts/log.gd" id="1_spugk"]
+[ext_resource type="Script" uid="uid://gxj8s1q12sg4" path="res://scripts/AutoMover2D.gd" id="2_g5036"]
+[ext_resource type="Script" uid="uid://bctbql6xv1tbd" path="res://scripts/VisibilityOffset2D.gd" id="3_dnvgf"]
+[ext_resource type="PackedScene" uid="uid://dx3kyad1djj7x" path="res://scenes/player_mover.tscn" id="4_cq5k7"]
+[ext_resource type="Texture2D" uid="uid://by1bg4jrm1wkv" path="res://assets/sprites/DEBUG.png" id="5_63ybo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjit2"]
+size = Vector2(15, 15)
+
+[node name="log" type="Node2D"]
+script = ExtResource("1_spugk")
+
+[node name="AutoMover2D" type="Node" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("2_g5036")
+target = NodePath("..")
+metadata/_custom_type_script = "uid://gxj8s1q12sg4"
+
+[node name="VisibilityOffset2D" type="VisibleOnScreenNotifier2D" parent="." node_paths=PackedStringArray("target")]
+rect = Rect2(0, 0, 16, 16)
+script = ExtResource("3_dnvgf")
+target = NodePath("..")
+metadata/_custom_type_script = "uid://bctbql6xv1tbd"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="PlayerMover" parent="." instance=ExtResource("4_cq5k7")]
+
+[node name="Templates" type="Node2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Templates"]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_cjit2")
+
+[node name="Sprite2D" type="Sprite2D" parent="Templates"]
+texture = ExtResource("5_63ybo")
+centered = false
+region_rect = Rect2(112, 0, 16, 16)
+
+[connection signal="moved" from="AutoMover2D" to="PlayerMover" method="move_player"]

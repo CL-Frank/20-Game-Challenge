@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://disaiqiv5ayds"]
+
+[ext_resource type="Script" uid="uid://c0n3drvbqypu3" path="res://scripts/log_spawner.gd" id="1_5neek"]
+[ext_resource type="PackedScene" uid="uid://c5id1jwxcwpks" path="res://scenes/log.tscn" id="2_uci4d"]
+
+[node name="Log_Spawner" type="Node2D"]
+script = ExtResource("1_5neek")
+log = ExtResource("2_uci4d")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

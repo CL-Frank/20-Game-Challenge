@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://3pdjl073g3bw"]
+
+[ext_resource type="Script" uid="uid://b7x06q83okpiw" path="res://scripts/racer.gd" id="1_dd78r"]
+[ext_resource type="Texture2D" uid="uid://7slgoqu8mfqg" path="res://assets/sprites/world_sprites.png" id="2_gq0vh"]
+[ext_resource type="PackedScene" uid="uid://b4konmltpytib" path="res://scenes/killzone.tscn" id="3_lwnh1"]
+
+[node name="racer" type="Node2D"]
+script = ExtResource("1_dd78r")
+speed = 0.8
+
+[node name="Killzone" parent="." instance=ExtResource("3_lwnh1")]
+scale = Vector2(1, 0.7600002)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_gq0vh")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)

@@ -1,25 +1,57 @@
 extends Area2D
 
-#64x64 tile size
-var tile_size = 64
-var inputs = {"right" : Vector2.RIGHT,
-"left": Vector2.LEFT, "up": Vector2.UP, "down": Vector2.DOWN}
+var moving = false
+var can_move = true
+@onready var ray = $RayCast2D
+@onready var sprite = $AnimatedSprite2D
 
+@export var respawn_location:Marker2D
+signal player_died
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	position = position.snapped(Vector2.ONE * tile_size)
-	position += Vector2.ONE * tile_size/2
+func _ready():
+	position = position.snapped(Vector2.ONE * 16) + Vector2.ONE * 8
+
+func _physics_process(delta):
+	if moving || !can_move:
+		return
 	
-func _unhandled_input(event: InputEvent) -> void:
-	for dir in inputs.keys():
-		if event.is_action_pressed(dir):
-			move(dir)
-			
-func move(dir):
-	position += inputs[dir] * tile_size
+	var dir = Vector2.ZERO
+	if Input.is_action_pressed("up"): dir = Vector2.UP
+	elif Input.is_action_pressed("down"): dir = Vector2.DOWN
+	elif Input.is_action_pressed("left"): dir = Vector2.LEFT
+	elif Input.is_action_pressed("right"): dir = Vector2.RIGHT
+	
+	if dir != Vector2.ZERO:
+		move_player(dir)
+
+func move_player(dir):
+	ray.target_position = dir * 16
+	ray.force_raycast_update()
+	
+	if !ray.is_colliding():
+		rotation = dir.angle() - PI/2
+		position += dir * 16
+		sprite.play("jump")
+		moving = true
+		await get_tree().create_timer(0.3).timeout
+		sprite.stop()
+		moving = false
+		
+func died():
+	print("PLAYER DIED")
+	can_move = false
+	$BloodSplatter.emitting = true
+	await $BloodSplatter.finished
+	player_died.emit()
+	position = respawn_location.position
+	position = position.snapped(Vector2.ONE * 16) + Vector2.ONE * 8
+	can_move = true
 	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+
+func _on_damage_source_detector_area_entered(area: Area2D) -> void:
+	died()
+
+
+func _on_drowning_detector_drowned() -> void:
+	died()

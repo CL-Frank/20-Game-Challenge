@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx3kyad1djj7x"]
+
+[ext_resource type="Script" uid="uid://dk2jwqbc4gegi" path="res://scripts/player_mover.gd" id="1_6n8jx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fqbx5"]
+size = Vector2(14, 14)
+
+[node name="PlayerMover" type="Node2D"]
+script = ExtResource("1_6n8jx")
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+position = Vector2(8, 9)
+shape = SubResource("RectangleShape2D_fqbx5")
+
+[connection signal="area_entered" from="PlayerDetector" to="." method="_on_player_detector_area_entered"]
+[connection signal="area_exited" from="PlayerDetector" to="." method="_on_player_detector_area_exited"]

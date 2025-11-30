@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsmwvknprjcjo"]
+
+[ext_resource type="Script" uid="uid://ckp883o2l8w6n" path="res://scripts/truck.gd" id="1_2lgic"]
+[ext_resource type="Texture2D" uid="uid://7slgoqu8mfqg" path="res://assets/sprites/world_sprites.png" id="2_hldv3"]
+[ext_resource type="PackedScene" uid="uid://b4konmltpytib" path="res://scenes/killzone.tscn" id="3_bh7du"]
+
+[node name="truck" type="Node2D"]
+script = ExtResource("1_2lgic")
+speed = 0.3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_hldv3")
+region_enabled = true
+region_rect = Rect2(96, 32, 32, 16)
+
+[node name="Killzone" parent="." instance=ExtResource("3_bh7du")]
+scale = Vector2(1.6628926, 0.7523498)

@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cc2bd4us6sty5"]
+
+[ext_resource type="Script" uid="uid://dgdx5tlwrkxb8" path="res://scripts/home.gd" id="1_u4wd2"]
+[ext_resource type="Texture2D" uid="uid://bj1olxgk4puos" path="res://assets/sprites/LilyPad.png" id="2_w18ys"]
+[ext_resource type="Texture2D" uid="uid://ci5ieqjqyabsp" path="res://assets/sprites/Frog_Home.png" id="3_w18ys"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_reixx"]
+size = Vector2(15, 15)
+
+[node name="Home" type="Node2D"]
+script = ExtResource("1_u4wd2")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_reixx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_w18ys")
+centered = false
+
+[node name="Frog_Home" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_w18ys")
+centered = false
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

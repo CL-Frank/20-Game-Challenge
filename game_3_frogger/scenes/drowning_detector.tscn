@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://bs22cigeb6b4j"]
+
+[ext_resource type="Script" uid="uid://c2tn20yeje3" path="res://scripts/drowning_detector.gd" id="1_1r26p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bbmuv"]
+size = Vector2(13, 13)
+
+[node name="DrowningDetector" type="Node2D"]
+script = ExtResource("1_1r26p")
+
+[node name="WaterDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WaterDetector"]
+shape = SubResource("RectangleShape2D_bbmuv")
+
+[node name="PlatformDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="PlatformDetector"]
+shape = SubResource("RectangleShape2D_bbmuv")
+
+[connection signal="body_entered" from="WaterDetector" to="." method="_on_water_detector_body_entered"]
+[connection signal="body_exited" from="WaterDetector" to="." method="_on_water_detector_body_exited"]
+[connection signal="area_entered" from="PlatformDetector" to="." method="_on_platform_detector_area_entered"]
+[connection signal="area_exited" from="PlatformDetector" to="." method="_on_platform_detector_area_exited"]
