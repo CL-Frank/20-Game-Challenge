@@ -27,8 +27,8 @@ func setupLength():
 			elif item == length:
 				sprite.texture = CROC_HEAD
 				var killzone = $Templates/Killzone.duplicate() as Area2D
-				killzone.position += (item - 1) * tile_offset
 				$Area2D.add_child(killzone)
+				killzone.position += (item - 3) * tile_offset
 			else:
 				sprite.texture = CROC_BODY
 			

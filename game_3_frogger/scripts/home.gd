@@ -6,12 +6,9 @@ signal frog_arrived
 func _ready() -> void:
 	$Sprite2D.texture = texture
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 
-func _on_area_2d_area_entered(area: Area2D) -> void:
+func _on_area_2d_area_entered(_area: Area2D) -> void:
 	$Frog_Home.visible = true
 	$Area2D.collision_layer = 2
 	frog_arrived.emit()

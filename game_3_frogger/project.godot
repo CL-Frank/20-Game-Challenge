@@ -21,6 +21,11 @@ window/size/viewport_width=208
 window/size/viewport_height=240
 window/size/borderless=true
 window/stretch/mode="canvas_items"
+window/stretch/scale=2.0
+
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
 
 [input]
 

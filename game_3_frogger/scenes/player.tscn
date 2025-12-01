@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://csvch5ae6uk5j"]
+[gd_scene load_steps=12 format=3 uid="uid://csvch5ae6uk5j"]
 
 [ext_resource type="Script" uid="uid://cmkily3nembq3" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://7slgoqu8mfqg" path="res://assets/sprites/world_sprites.png" id="2_g2els"]
 [ext_resource type="PackedScene" uid="uid://bs22cigeb6b4j" path="res://scenes/drowning_detector.tscn" id="3_qhqgy"]
+[ext_resource type="AudioStream" uid="uid://cgm5s5a8xrlkm" path="res://assets/sounds/Die.wav" id="4_dqkch"]
+[ext_resource type="AudioStream" uid="uid://cs7o8hdlsey4g" path="res://assets/sounds/Jump.wav" id="5_qlg0r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
 atlas = ExtResource("2_g2els")
@@ -79,6 +81,13 @@ shape = SubResource("RectangleShape2D_qhqgy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_dqkch")
+
+[node name="DieSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_dqkch")
+volume_db = 5.0
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_qlg0r")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="drowned" from="DrowningDetector" to="." method="_on_drowning_detector_drowned"]

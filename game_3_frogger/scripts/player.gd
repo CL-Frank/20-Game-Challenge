@@ -11,7 +11,7 @@ signal player_died
 func _ready():
 	position = position.snapped(Vector2.ONE * 16) + Vector2.ONE * 8
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if moving || !can_move:
 		return
 	
@@ -33,6 +33,7 @@ func move_player(dir):
 		sprite.play("jump")
 		position += dir * 16
 		moving = true
+		$JumpSound.play()
 		await get_tree().create_timer(0.3).timeout
 		sprite.stop()
 		moving = false
@@ -41,20 +42,22 @@ func died():
 	print("PLAYER DIED")
 	can_move = false
 	$BloodSplatter.emitting = true
+	$DieSound.play()
 	$AnimatedSprite2D.visible = false
 	await $BloodSplatter.finished
 	player_died.emit()
-	respawn()
-	$AnimatedSprite2D.visible = true	
-	can_move = true
+	
+	
 	
 func respawn():
 	position = respawn_location.position
 	position = position.snapped(Vector2.ONE * 16) + Vector2.ONE * 8
+	$AnimatedSprite2D.visible = true
+	can_move = true
 	
 
 
-func _on_damage_source_detector_area_entered(area: Area2D) -> void:
+func _on_damage_source_detector_area_entered(_area: Area2D) -> void:
 	died()
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://f4bjtts6ek0u"]
+[gd_scene load_steps=12 format=3 uid="uid://f4bjtts6ek0u"]
 
 [ext_resource type="Script" uid="uid://bdwf7xlqfiupb" path="res://scripts/turtle.gd" id="1_f2r5w"]
 [ext_resource type="Script" uid="uid://gxj8s1q12sg4" path="res://scripts/AutoMover2D.gd" id="2_f2r5w"]
@@ -14,11 +14,25 @@ size = Vector2(15, 15)
 atlas = ExtResource("6_f2r5w")
 region = Rect2(0, 32, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_3flrw"]
+atlas = ExtResource("6_f2r5w")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_761ki"]
+atlas = ExtResource("6_f2r5w")
+region = Rect2(48, 32, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_udfqq"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4lu78")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3flrw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_761ki")
 }],
 "loop": true,
 "name": &"default",
@@ -27,6 +41,8 @@ animations = [{
 
 [node name="turtle" type="Node2D"]
 script = ExtResource("1_f2r5w")
+initial_delay = null
+length = 1
 
 [node name="AutoMover2D" type="Node" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("2_f2r5w")

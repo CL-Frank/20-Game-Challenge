@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://c86vi7uaelavj"]
+
+[ext_resource type="Texture2D" uid="uid://dptpif4t85cvl" path="res://assets/UI/PNG/Grey/Default/bar_square_large_square.png" id="1_jw6e5"]
+[ext_resource type="Script" uid="uid://iovoccn6crat" path="res://scripts/game_over_screen.gd" id="1_wa2qn"]
+[ext_resource type="Texture2D" uid="uid://e7ndaligrk32" path="res://assets/UI/PNG/Blue/Double/bar_square_large.png" id="2_wa2qn"]
+[ext_resource type="Texture2D" uid="uid://bqa0ehj7ntpam" path="res://assets/UI/PNG/Green/Double/bar_square_large.png" id="3_cyfkl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jscy8"]
+font_size = 8
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_xx0b3"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_yc10j"]
+font = SubResource("SystemFont_xx0b3")
+font_size = 12
+
+[node name="GameOverScreen" type="CenterContainer"]
+offset_right = 208.0
+offset_bottom = 240.0
+script = ExtResource("1_wa2qn")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(100, 65)
+layout_mode = 2
+texture = ExtResource("1_jw6e5")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+text = "YOU WIN"
+label_settings = SubResource("LabelSettings_jscy8")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+text = "Final Score"
+label_settings = SubResource("LabelSettings_jscy8")
+horizontal_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(80, 20)
+layout_mode = 2
+texture_normal = ExtResource("2_wa2qn")
+texture_pressed = ExtResource("3_cyfkl")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="NinePatchRect/VBoxContainer/TextureButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_right = 40.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play Again"
+label_settings = SubResource("LabelSettings_yc10j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]

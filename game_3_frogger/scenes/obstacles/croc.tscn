@@ -63,5 +63,6 @@ position = Vector2(32, 8)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Templates/Killzone"]
 position = Vector2(8, 0)
 shape = SubResource("RectangleShape2D_7oqo2")
+debug_color = Color(0.9900741, 0, 0.2884172, 0.41960785)
 
 [connection signal="moved" from="AutoMover2D" to="PlayerMover" method="move_player"]
