@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://c12w5ylh427gx"]
+
+[ext_resource type="Texture2D" uid="uid://s6iodtbo51u6" path="res://assets/simpleSpace_tilesheet@2.png" id="1_8afob"]
+[ext_resource type="Script" uid="uid://bx1nfkuahqujr" path="res://scenes/player/player.gd" id="1_dovo2"]
+[ext_resource type="PackedScene" uid="uid://dyk0848l4yc4e" path="res://scenes/components/screen_offset_component.tscn" id="3_gmlin"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dovo2"]
+radius = 20.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmlin"]
+atlas = ExtResource("1_8afob")
+region = Rect2(288, 144, 64, 96)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_dovo2")
+
+[node name="ScreenOffsetComponent" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_gmlin")]
+target = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dovo2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+texture = SubResource("AtlasTexture_gmlin")

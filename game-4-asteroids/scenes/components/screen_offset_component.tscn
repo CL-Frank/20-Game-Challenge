@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyk0848l4yc4e"]
+
+[ext_resource type="Script" uid="uid://ba6tf21ywy4cf" path="res://scenes/components/screen_offset_component.gd" id="1_ywiyr"]
+
+[node name="ScreenOffsetComponent" type="Node2D"]
+script = ExtResource("1_ywiyr")
