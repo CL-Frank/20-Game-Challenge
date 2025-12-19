@@ -1,4 +1,7 @@
 # 🎮 20 Game Challenge
+<!---
+🔲 ✅ ⚒️
+--->
 
 Welcome to my **20 Game Challenge**! The goal of this challenge is to design and develop 20 different games as a way to improve my game development skills, explore various genres and mechanics, and have fun in the process. You can find the link to the [**20 Games Challenge Website**](https://20_games_challenge.gitlab.io)
 
@@ -13,133 +16,180 @@ Each game will be listed below with a short description, tech stack used, and a 
 | 1      | Flappy Bird           | ✅ Completed |
 | 2      | Breakout           | ✅ Completed |
 | 3      | Frogger           | ✅ Completed |
-| 4      | Indy 500           | 🔲 Planned |
-| 5      | Conway's Game of Life           | 🔲 Planned |
+| 4      | Asteroids           | ⚒️ Busy |
+| 5      | Pac-Man           | 🔲 Planned |
 | More To Come|
 ---
 
 ##  Completed Games
 
 ### 🐦 Game 1: Flappy Bird Clone
-A simple clone of the classic Flappy Bird game. Tap or click to keep the bird in the air and avoid obstacles. The game gets faster as you play and so becomes more difficult.  
-**Things I learned:**
-- Taught me the basics of navigating the Godot Engine
-- Using 2D nodes to create scenes, spawning and deleting objects   
 
-**Tech Stack**: Godot Engine  
+A simple clone of the classic *Flappy Bird* game. Click or tap to keep the bird airborne while avoiding incoming obstacles. The game gradually increases in speed, raising the difficulty over time.
+Overall very simple game, mechanic wise and visually.
 
-**Source Code**: [Game 1: Flappy Bird](./game_1_flappy_bird/)  
-**Date Completed** : 03 July 2025
+**Date Completed**: 03 July 2025  
+**Engine / Framework**: Godot Engine  
+**Platform**: Web (HTML5)  
 
-**Play here**: *https://cl-frank.itch.io/20-g1-flappy-bird*  
+**Play Here**: [https://cl-frank.itch.io/20-g1-flappy-bird](https://cl-frank.itch.io/20-g1-flappy-bird)  
+**Source Code**: ./game_1_flappy_bird/  
 
-#### Challenge Goals
-✔ Create a game world with a floor.  
-✔ Add an object that represents the main character. Apply a constant force to the character so it falls to the floor.  
-✔ Add obstacles on the right of the game area. The obstacles should slide across the screen toward the left. The obstacles will appear in pairs, with a vertical gap between them.  
-✔ Detect when the character collides with the floor or obstacles, and reset the game when a collision occurs.  
-✔ Accumulate one point for each obstacle that the player passes. Display the score.  
+---
 
-#### ✨ Possible Features to Add
-- Sound effects for flapping, dying, increasing score
-- Background music loop
-- Animated background (parallax scrolling)
-- Particle effects when passing pipes or dying
-- High score saving
-- Pause and resume functionality
-- Sprites for visuals
-- Mobile Support
+#### 🧠 What I Learned
+
+* Navigating the Godot Engine editor and scene workflow  
+* Building scenes using Godot 2D nodes  
+* Applying physics forces to characters  
+* Runtime spawning and cleanup of obstacles  
+* Collision detection and game state resets  
+
+---
+| 🛠️ Core Features (Implemented) | 📋 Original Challenge Goals |
+|-------------------------------|-----------------------------|
+| ✔ Physics-based player movement with gravity  | ✔ Create a game world with a floor |
+| ✔ Procedural obstacle spawning with variable gaps   | ✔ Add a gravity-affected character |
+| ✔ Collision detection and game reset logic    | ✔ Spawn paired moving obstacles |
+| ✔ Scoring system triggered by obstacle traversal                 | ✔ Track and display score |
+||✔ Detect collisions and reset the game|
+
+---
+
+#### ✨ Possible Improvements
+
+* Audio: sound effects for flapping, scoring, and dying
+* Music: looping background track
+* Visuals: parallax scrolling background and animated sprites
+* Effects: particle effects when scoring or colliding
+* Systems: high score saving and pause/resume functionality
+* Platform: improved mobile support
+
+---
+
+#### 🖼️ Screenshots
+<img width="389" height="261" alt="flappy_bird_01" src="https://github.com/user-attachments/assets/e86b3e50-4ed4-4cd2-bcc8-72c738dfe751" />
+
 
 ---
 ### 🧱 Game 2: Breakout Clone
-The 1981 classic arcade video game where players guide frogs across roads and rivers
-The original game had eight rows of 16 bricks each, though you can change the number of bricks depending on the size of the game space.
-**Things I learned:** 
-- Making use of signals to control game states and conditions across scenes
-- Controlling rigid bodies  
-**Tech Stack**: Godot Engine   
 
-**Source Code**: [Game 2: Breakout](./game_2_breakout/)  
-**Date Completed** : 06 July 2025 
+My early take on the classic *Breakout* arcade game. Control a paddle to keep the ball in play, destroy bricks, and manage lives as the ball accelerates with each successful hit.
 
-**Play here**: *https://cl-frank.itch.io/20-g2-breakout*  
+**Date Completed**: 06 July 2025  
+**Engine / Framework**: Godot Engine  
+**Platform**: Web (HTML5)  
 
-#### Challenge Goals
-✔Create a game space with walls and a ceiling.  
-✔Add a paddle that can be moved left and right via player inputs.  
-✔Add a ball that will bounce off of the paddle, walls, and ceiling.  
-✔Add square game objects (bricks) into the top of the game space.  
-✔Enable the ball to bounce off of the bricks. When the ball bounces, the brick should disappear.  
-✔Breaking a brick should add to the player’s score.  
-✔The ball’s speed should increase as bricks are broken.  
-✔The score should be displayed, as well as a life counter. The player starts with three lives. If the player misses the ball, a life should be subtracted. When all lives are used, the game ends.  
+**Play Here**: [https://cl-frank.itch.io/20-g2-breakout](https://cl-frank.itch.io/20-g2-breakout)  
+**Source Code**: ./game_2_breakout/  
+
+---
+
+#### 🧠 What I Learned
+
+* Using Godot signals to manage game states across multiple scenes
+* Controlling and configuring rigid bodies for predictable physics behavior
+* Handling collision responses between multiple dynamic objects
+* Managing score, lives, and game-over conditions
+
+---
+
+#### 🛠️ Features vs 📋 Original Challenge Goals
+
+| 🛠️ Core Features (Implemented)              | 📋 Original Challenge Goals                    |
+| -------------------------------------------- | ---------------------------------------------- |
+| ✔ Paddle movement via player input           | ✔ Create a game space with walls and a ceiling |
+| ✔ Physics-based ball with collision response | ✔ Add a paddle that moves left and right       |
+| ✔ Brick destruction with score increment     | ✔ Enable the ball to bounce off bricks         |
+| ✔ Increasing ball speed as bricks are broken | ✔ Increase ball speed over time                |
+| ✔ Score and life tracking system             | ✔ Display score and life counter               |
+| ✔ Game-over state when lives are depleted    | ✔ End the game when all lives are used         |
+
+---
+
+#### ✨ Possible Improvements
+
+* Power-ups (multi-ball, wider paddle, lasers)
+* Sound effects and background music
+* Multiple levels or varied brick layouts
+* Brick hit animations or particle effects
+* Combo or streak-based scoring system
+* Mouse-based paddle control option
+* Custom sprites for improved visuals
+* Mobile support
+
+---
+
+#### 🖼️ Screenshots
 
 
+<img width="389" height="261" alt="breakout_01" src="https://github.com/user-attachments/assets/edfdfc9b-56d6-43fd-891d-2c038318e158" />
 
-#### ✨ Possible Features to Add
-- Power-ups (multi-ball, wider paddle, lasers)  
-- Sound effects and background music  
-- Level transitions or multiple brick layouts  
-- Brick hit animations or particle effects  
-- Combo system   
-- Paddle control via mouse input
-- Custom Sprites for visuals
-- Mobile Support
 
 
 ---
 ### 🐸 Game 3: Frogger Clone
-The 1981 classic arcade video game where players guide frogs across roads and rivers. The designer, Akira Hashimoto, came up with the idea for the game after he saw a frog trying to cross the road while Hashimoto was stopped at a red light.
-Made of 5 road lanes, 5 water lanes, many obstacles and the goal of reaching 5 homes at the end!
-**Things I learned:** 
-- Grid Based Movement
-- Moving the player with platforms
-- Pixel Art
-- Basic Animations
--   
-**Tech Stack**: Godot Engine
 
-**Source Code**: [Game 3: Frogger](./game_3_frogger/)  
-**Date Completed** : 01 December 2024
+A faithful clone of the 1981 arcade classic *Frogger*. Guide the frog across busy roads and dangerous rivers using grid-based movement, avoiding cars, water hazards, and wildlife to safely reach all five homes at the top of the screen.
 
-**Play here**: *https://cl-frank.itch.io/game3-frogger-clone*  
+**Date Completed**: 01 December 2025  
+**Engine / Framework**: Godot Engine  
+**Platform**: Web (HTML5)  
 
-#### Challenge Goals
-✔Make and animate a frog. The frog can move up, down, left, or right. Instead of moving smoothly, the frog should hop each time a button is pressed. Each button press will move the frog one tile.
-✔Make the play area. The area is divided into lanes (rows). There is a safe lane, five lanes of road, another safe lane, and five lanes of water. Finally, there are five lillypads on the top of the screen.
-✔Make and animate the game obstacles. All obstacles and platforms will cross the screen horizontally. Obstacles will alternate direction for each lane.
-✔The road has cars. Each lane has a unique pattern of cars, and speeds vary between lanes.
-✔The river has alternating lanes of logs and turtles. Some turtles can dive underwater periodically. Some logs are actually crocodiles, which can eat the player if the player lands in their open mouth.
-✔The player should die if:
-  -they leave the screen
-  -they are hit by a car
-  -they fall in the water (frogs can drown, apparently)
-  -they are eaten by a wild animal
-✔If the player reaches a lillypad on the top of the screen, the lillypad will be “full.” When all five lillypads are full, the level is complete.
-✔Add a UI with a life counter and a score counter.
-✔Create an animation or use a particle effect to make the frog’s death extra juicy!
-
-#### ✨ Possible Features to Add
-- Pause Menu
-- Settings
-- More Levels
-- Improve Animations
+**Play Here**: [https://cl-frank.itch.io/game3-frogger-clone](https://cl-frank.itch.io/game3-frogger-clone)  
+**Source Code**: ./game_3_frogger/  
 
 ---
 
-## 🧠 Goals for This Challenge
-- Build experience with different gameplay mechanics
-- Practice level design and polish
-- Improve asset integration and UI design
-- Learn to finish and publish projects
+#### 🧠 What I Learned
+
+* Implementing grid-based movement with discrete player actions
+* Moving the player using dynamic platforms (logs, turtles)
+* Designing lane-based level layouts with varying behaviors
+* Creating and integrating pixel art assets
+* Implementing basic animations and death effects
+
+---
+
+#### 🛠️ Features vs 📋 Original Challenge Goals
+
+| 🛠️ Core Features (Implemented)                          | 📋 Original Challenge Goals                      |
+| -------------------------------------------------------- | ------------------------------------------------ |
+| ✔ Grid-based hopping movement system                     | ✔ Frog moves one tile per button press           |
+| ✔ Multi-lane level with road, water, and safe zones      | ✔ Create lanes for roads, rivers, and safe areas |
+| ✔ Cars with lane-specific speeds and patterns            | ✔ Unique car patterns and speeds per lane        |
+| ✔ Moving platforms (logs, turtles) that carry the player | ✔ Platforms move horizontally across water lanes |
+| ✔ Hazard interactions (cars, water, animals)             | ✔ Player dies from collisions or drowning        |
+| ✔ Crocodiles and diving turtles as advanced hazards      | ✔ Add dangerous river obstacles                  |
+| ✔ Lily pad goal tracking and level completion logic      | ✔ Fill all five lillypads to complete the level  |
+| ✔ UI with score and life counter                         | ✔ Display score and remaining lives              |
+| ✔ Animated death effects for player feedback             | ✔ Add animation or particle effect on death      |
+
+---
+
+#### ✨ Possible Improvements
+
+* Pause menu and in-game settings
+* Additional levels with increased difficulty
+* Improved animations and visual polish
+* Enhanced sound effects and background music
+
+---
+
+#### 🖼️ Screenshots
+
+<img width="829" height="962" alt="frogger_01" src="https://github.com/user-attachments/assets/a252059b-b4e0-4a1f-b07a-bd37d6072e55" />
+<img width="374" height="270" alt="frogger_02" src="https://github.com/user-attachments/assets/52af32ea-aa4a-4cab-bf4e-76260f759224" />
+
 
 ---
 
 ## 🛠 Tools I Use
 - **Game Engine**: Godot
 - **Art Tools**: Aseprite
-- **Sound**: N/A
+- **Sound Tools**: Audacity
 - **Version Control**: Git + GitHub
+- **Use of AI**: I will be using AI as a tool, but not to create any asset or code
 
 ---
 
