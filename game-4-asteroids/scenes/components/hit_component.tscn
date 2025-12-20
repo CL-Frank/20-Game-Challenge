@@ -4,3 +4,5 @@
 
 [node name="HitComponent" type="Area2D"]
 script = ExtResource("1_t7wh5")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

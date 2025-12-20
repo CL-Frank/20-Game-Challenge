@@ -28,6 +28,7 @@ offset = 40.0
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="HitComponent" parent="." instance=ExtResource("4_gsk5h")]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitComponent"]
 shape = SubResource("CircleShape2D_dmqyj")

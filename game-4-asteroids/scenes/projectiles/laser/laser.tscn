@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://cc8fh1e81t87p"]
+
+[ext_resource type="Texture2D" uid="uid://dbti4pte2yw8r" path="res://assets/lasers/laserBlue01.png" id="1_drip1"]
+[ext_resource type="PackedScene" uid="uid://dyk0848l4yc4e" path="res://scenes/components/screen_offset_component.tscn" id="1_v3umy"]
+[ext_resource type="PackedScene" uid="uid://eqi7rlfp7cba" path="res://scenes/components/hit_component.tscn" id="2_tsjo6"]
+[ext_resource type="PackedScene" uid="uid://vw4rlpbul6gm" path="res://scenes/components/projectile_component.tscn" id="4_4saan"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v3umy"]
+radius = 9.0
+
+[node name="Laser" type="Node2D"]
+
+[node name="ProjectileComponent" parent="." node_paths=PackedStringArray("target_projectile") instance=ExtResource("4_4saan")]
+target_projectile = NodePath("..")
+speed = 600.0
+life_time = 1.0
+
+[node name="ScreenOffsetComponent" parent="." node_paths=PackedStringArray("target") instance=ExtResource("1_v3umy")]
+target = NodePath("..")
+offset = 10.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -27)
+texture = ExtResource("1_drip1")
+
+[node name="HitComponent" parent="." instance=ExtResource("2_tsjo6")]
+position = Vector2(0, -40)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitComponent"]
+shape = SubResource("CircleShape2D_v3umy")

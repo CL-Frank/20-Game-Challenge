@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbnuelopnmbjo"]
+
+[ext_resource type="PackedScene" uid="uid://c12w5ylh427gx" path="res://scenes/player/player.tscn" id="1_6fwvt"]
+[ext_resource type="PackedScene" uid="uid://cc8fh1e81t87p" path="res://scenes/projectiles/laser/laser.tscn" id="2_ntwj7"]
+
+[node name="TestScenePlayerMovement" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_6fwvt")]
+position = Vector2(640, 365)
+
+[node name="Laser" parent="." instance=ExtResource("2_ntwj7")]
+position = Vector2(424, 416)
+rotation = 0.64751714
