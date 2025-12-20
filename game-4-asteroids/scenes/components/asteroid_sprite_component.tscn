@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dih5nn0gyv8t1"]
+
+[ext_resource type="Script" uid="uid://baibwtdqg32fa" path="res://scenes/components/asteroid_sprites_component.gd" id="1_ebj1g"]
+
+[node name="AsteroidSpriteComponent" type="Node"]
+script = ExtResource("1_ebj1g")

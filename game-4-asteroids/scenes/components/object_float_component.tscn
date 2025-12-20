@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0rtjl8dh3f4"]
+
+[ext_resource type="Script" uid="uid://wsa0ltgjfen8" path="res://scenes/components/object_float_component.gd" id="1_kp80l"]
+
+[node name="ObjectFloatComponent" type="Node"]
+script = ExtResource("1_kp80l")

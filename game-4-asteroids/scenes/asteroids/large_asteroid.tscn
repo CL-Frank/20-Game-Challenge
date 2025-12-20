@@ -1,0 +1,33 @@
+[gd_scene load_steps=10 format=3 uid="uid://5ciyiqkcjntw"]
+
+[ext_resource type="PackedScene" uid="uid://dyk0848l4yc4e" path="res://scenes/components/screen_offset_component.tscn" id="1_e7h38"]
+[ext_resource type="Texture2D" uid="uid://h3jo883edmsd" path="res://assets/asteroids/meteorBrown_big2.png" id="3_eqwbq"]
+[ext_resource type="Texture2D" uid="uid://c662wymkk8j20" path="res://assets/asteroids/meteorBrown_big1.png" id="3_gsk5h"]
+[ext_resource type="PackedScene" uid="uid://d0rtjl8dh3f4" path="res://scenes/components/object_float_component.tscn" id="3_mth3u"]
+[ext_resource type="Texture2D" uid="uid://cery5kpf3wvvi" path="res://assets/asteroids/meteorBrown_big3.png" id="4_fl20o"]
+[ext_resource type="PackedScene" uid="uid://eqi7rlfp7cba" path="res://scenes/components/hit_component.tscn" id="4_gsk5h"]
+[ext_resource type="PackedScene" uid="uid://dih5nn0gyv8t1" path="res://scenes/components/asteroid_sprite_component.tscn" id="5_dcs5k"]
+[ext_resource type="Texture2D" uid="uid://bo0ft3stwyeka" path="res://assets/asteroids/meteorBrown_big4.png" id="6_rfkcs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dmqyj"]
+radius = 45.17743
+
+[node name="LargeAsteroid" type="Node2D"]
+
+[node name="AsteroidSpriteComponent" parent="." node_paths=PackedStringArray("sprite_2d") instance=ExtResource("5_dcs5k")]
+sprite_2d = NodePath("../Sprite2D")
+sprites = Array[Texture2D]([ExtResource("3_gsk5h"), ExtResource("3_eqwbq"), ExtResource("4_fl20o"), ExtResource("6_rfkcs")])
+
+[node name="ObjectFloatComponent" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_mth3u")]
+target = NodePath("..")
+
+[node name="ScreenOffsetComponent" parent="." node_paths=PackedStringArray("target") instance=ExtResource("1_e7h38")]
+target = NodePath("..")
+offset = 40.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="HitComponent" parent="." instance=ExtResource("4_gsk5h")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitComponent"]
+shape = SubResource("CircleShape2D_dmqyj")

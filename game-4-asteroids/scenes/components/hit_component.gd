@@ -1,0 +1,2 @@
+class_name HitComponent
+extends Area2D
