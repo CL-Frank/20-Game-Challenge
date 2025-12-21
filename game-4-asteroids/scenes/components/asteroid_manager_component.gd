@@ -11,6 +11,13 @@ func _ready() -> void:
 		
 func on_asteroid_exploded(pos, size) -> void:
 	await get_tree().process_frame
+	match size:
+		Asteroid.AsteroidSize.LARGE:
+			GameManager._increment_score(20)
+		Asteroid.AsteroidSize.MEDIUM:
+			GameManager._increment_score(50)
+		Asteroid.AsteroidSize.SMALL:
+			GameManager._increment_score(100)
 	spawnAsteroid(pos,size)
 
 func spawnAsteroid(pos,size)-> void:

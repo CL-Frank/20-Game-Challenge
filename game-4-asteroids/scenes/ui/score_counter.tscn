@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://dltdfcaaheqyy"]
+
+[ext_resource type="Script" uid="uid://b8rwh5wipscwc" path="res://scenes/ui/score_counter.gd" id="1_esrf8"]
+[ext_resource type="Theme" uid="uid://bdof6ip2nwgv2" path="res://scenes/ui/game_ui_theme.tres" id="2_jvmmt"]
+
+[node name="ScoreCounter" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_esrf8")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -173.0
+offset_bottom = 74.0
+grow_horizontal = 0
+theme = ExtResource("2_jvmmt")
+theme_type_variation = &"ScoreCounter"
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="ScoreLabel" type="Label" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("2_jvmmt")
+theme_type_variation = &"ScoreCounterLabel"
+theme_override_font_sizes/font_size = 27
+text = "Score: "

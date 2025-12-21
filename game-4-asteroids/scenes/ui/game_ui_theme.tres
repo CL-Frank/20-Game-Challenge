@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bdof6ip2nwgv2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5gges"]
+
+[resource]
+ScoreCounter/base_type = &"PanelContainer"
+ScoreCounter/styles/panel = SubResource("StyleBoxTexture_5gges")
+ScoreCounterLabel/base_type = &"Label"

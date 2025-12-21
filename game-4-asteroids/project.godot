@@ -13,6 +13,10 @@ config_version=5
 config/name="Game_4_Asteroids"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
+[autoload]
+
+GameManager="*res://scripts/globals/game_manager.gd"
+
 [display]
 
 window/size/viewport_width=1280

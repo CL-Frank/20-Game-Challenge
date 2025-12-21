@@ -6,8 +6,10 @@ extends Node
 @export var life_time: float= 5.0
 
 @export var collision_shape_2d: CollisionShape2D
+@onready var hit_component: HitComponent = $"../HitComponent"
 
 var movement_vector = Vector2(0,-1)
+
 
 
 func _physics_process(delta: float) -> void:
