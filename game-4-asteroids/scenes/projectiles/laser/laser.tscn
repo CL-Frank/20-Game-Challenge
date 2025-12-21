@@ -10,14 +10,14 @@ radius = 9.0
 
 [node name="Laser" type="Node2D"]
 
-[node name="ProjectileComponent" parent="." node_paths=PackedStringArray("target_projectile") instance=ExtResource("4_4saan")]
+[node name="ProjectileComponent" parent="." node_paths=PackedStringArray("target_projectile", "collision_shape_2d") instance=ExtResource("4_4saan")]
 target_projectile = NodePath("..")
 speed = 600.0
 life_time = 1.0
+collision_shape_2d = NodePath("../HitComponent/CollisionShape2D")
 
 [node name="ScreenOffsetComponent" parent="." node_paths=PackedStringArray("target") instance=ExtResource("1_v3umy")]
 target = NodePath("..")
-offset = 10.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -27)

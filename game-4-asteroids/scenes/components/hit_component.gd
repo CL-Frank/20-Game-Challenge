@@ -1,7 +1,7 @@
 class_name HitComponent
 extends Area2D
 
-
-func _on_area_entered(area: Area2D) -> void:
-	if area.is_in_group("asteroid"):
-		area.explode()
+signal hit
+func _on_area_entered(_area: Area2D) -> void:
+	#if area.is_in_group("asteroid"):
+	hit.emit()

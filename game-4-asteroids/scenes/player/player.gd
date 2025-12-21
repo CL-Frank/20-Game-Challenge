@@ -15,7 +15,7 @@ extends CharacterBody2D
 func _ready() -> void:
 	hurt_component.hurt.connect(on_hurt)
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_pressed("shoot"):
 		if !shoot_cd:
 			on_player_shoot()
@@ -40,11 +40,9 @@ func _physics_process(delta: float) -> void:
 	if input_vector.y == 0:
 		velocity = velocity.move_toward(Vector2.ZERO, 3)
 		
-	
-		
-	
-func on_hurt(area: Area2D) -> void:
-	print("Player hit by: ", area.collision_layer)
+#PLayer Collides with asteroid
+func on_hurt() -> void:
+	print("Player hit")
 		
 func on_player_shoot() -> void:
 	var laser_instance = laser_scene.instantiate()

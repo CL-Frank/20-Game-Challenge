@@ -1,26 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://du83erjvdgyiw"]
+[gd_scene load_steps=3 format=3 uid="uid://du83erjvdgyiw"]
 
-[ext_resource type="PackedScene" uid="uid://cax5crrp70we3" path="res://scenes/components/asteroid_explode_component.tscn" id="1_8nk64"]
 [ext_resource type="PackedScene" uid="uid://c12w5ylh427gx" path="res://scenes/player/player.tscn" id="1_qyfiy"]
 [ext_resource type="PackedScene" uid="uid://5ciyiqkcjntw" path="res://scenes/asteroids/asteroid.tscn" id="2_0ao8q"]
 
 [node name="TestSceneAsteroid" type="Node2D"]
 
-[node name="AsteroidManagerComponent" parent="." node_paths=PackedStringArray("asteroids") instance=ExtResource("1_8nk64")]
-asteroids = NodePath("../Asteroids")
-
 [node name="Player" parent="." instance=ExtResource("1_qyfiy")]
 position = Vector2(91, 128)
 
-[node name="Asteroids" type="Node2D" parent="." groups=["asteroids"]]
+[node name="Asteroids" type="Node2D" parent="."]
+position = Vector2(241, 141)
 
 [node name="Asteroid" parent="Asteroids" instance=ExtResource("2_0ao8q")]
-position = Vector2(267, 294)
+position = Vector2(-2, 162)
+size = 0
 
 [node name="Asteroid2" parent="Asteroids" instance=ExtResource("2_0ao8q")]
-position = Vector2(648, 294)
+position = Vector2(379, 162)
 size = 1
 
 [node name="Asteroid3" parent="Asteroids" instance=ExtResource("2_0ao8q")]
-position = Vector2(434, 459)
+position = Vector2(165, 327)
 size = 2

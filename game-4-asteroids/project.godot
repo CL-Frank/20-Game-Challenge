@@ -22,8 +22,13 @@ window/size/viewport_height=720
 
 folder_colors={
 "res://assets/": "orange",
-"res://scenes/": "green"
+"res://scenes/": "green",
+"res://scripts/": "pink"
 }
+
+[global_group]
+
+asteroids=""
 
 [input]
 

@@ -1,0 +1,55 @@
+[gd_scene load_steps=16 format=3 uid="uid://5ciyiqkcjntw"]
+
+[ext_resource type="Script" uid="uid://cp6o88n18v8jc" path="res://scenes/asteroids/asteroid.gd" id="1_vucqq"]
+[ext_resource type="PackedScene" uid="uid://dih5nn0gyv8t1" path="res://scenes/components/asteroid_sprite_component.tscn" id="2_8vt2t"]
+[ext_resource type="Texture2D" uid="uid://c662wymkk8j20" path="res://assets/asteroids/meteorBrown_big1.png" id="3_0wnxl"]
+[ext_resource type="Texture2D" uid="uid://h3jo883edmsd" path="res://assets/asteroids/meteorBrown_big2.png" id="4_d48al"]
+[ext_resource type="Texture2D" uid="uid://cery5kpf3wvvi" path="res://assets/asteroids/meteorBrown_big3.png" id="5_bey2v"]
+[ext_resource type="Texture2D" uid="uid://bo0ft3stwyeka" path="res://assets/asteroids/meteorBrown_big4.png" id="6_ihnjr"]
+[ext_resource type="Texture2D" uid="uid://01if1mgbja8l" path="res://assets/asteroids/meteorBrown_med1.png" id="7_d48al"]
+[ext_resource type="PackedScene" uid="uid://d0rtjl8dh3f4" path="res://scenes/components/object_float_component.tscn" id="7_eekj5"]
+[ext_resource type="Texture2D" uid="uid://ys0g3rfnblb" path="res://assets/asteroids/meteorBrown_med3.png" id="8_bey2v"]
+[ext_resource type="PackedScene" uid="uid://dyk0848l4yc4e" path="res://scenes/components/screen_offset_component.tscn" id="8_k3qgf"]
+[ext_resource type="Texture2D" uid="uid://dowajysys1s7w" path="res://assets/asteroids/meteorBrown_tiny1.png" id="9_l4sdg"]
+[ext_resource type="Texture2D" uid="uid://dlqsqr0rahbgw" path="res://assets/asteroids/meteorBrown_tiny2.png" id="10_ihnjr"]
+[ext_resource type="Shape2D" uid="uid://0icufvbeenxq" path="res://resources/small_asteroid_collision_size.tres" id="11_vufhy"]
+[ext_resource type="PackedScene" uid="uid://bbmisduepmm2b" path="res://scenes/components/hurt_component.tscn" id="16_ihnjr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d48al"]
+radius = 7.0
+
+[node name="Asteroid" type="StaticBody2D"]
+collision_layer = 2
+script = ExtResource("1_vucqq")
+
+[node name="AsteroidSpriteComponent" parent="." node_paths=PackedStringArray("asteroid", "screen_offset", "object_float", "sprite_2d", "hit_component_collision_shape", "hurt_component_collision_shape") instance=ExtResource("2_8vt2t")]
+asteroid = NodePath("..")
+screen_offset = NodePath("../ScreenOffsetComponent")
+object_float = NodePath("../ObjectFloatComponent")
+sprite_2d = NodePath("../Sprite2D")
+hit_component_collision_shape = NodePath("../CollisionShape2D")
+hurt_component_collision_shape = NodePath("../HurtComponent/HurtComponentCollisionShape")
+large_sprites = Array[Texture2D]([ExtResource("3_0wnxl"), ExtResource("4_d48al"), ExtResource("5_bey2v"), ExtResource("6_ihnjr")])
+medium_sprites = Array[Texture2D]([ExtResource("7_d48al"), ExtResource("8_bey2v")])
+small_sprites = Array[Texture2D]([ExtResource("9_l4sdg"), ExtResource("10_ihnjr")])
+
+[node name="ObjectFloatComponent" parent="." node_paths=PackedStringArray("target") instance=ExtResource("7_eekj5")]
+target = NodePath("..")
+
+[node name="ScreenOffsetComponent" parent="." node_paths=PackedStringArray("target", "collision_shape_2d") instance=ExtResource("8_k3qgf")]
+target = NodePath("..")
+collision_shape_2d = NodePath("../HurtComponent/HurtComponentCollisionShape")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("9_l4sdg")
+
+[node name="HurtComponent" parent="." instance=ExtResource("16_ihnjr")]
+collision_layer = 2
+collision_mask = 4
+
+[node name="HurtComponentCollisionShape" type="CollisionShape2D" parent="HurtComponent"]
+shape = ExtResource("11_vufhy")
+debug_color = Color(0.9941345, 0, 0.23406526, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_d48al")
