@@ -6,6 +6,7 @@ signal lives_changed
 var lives: int = 3
 var score: int = 0
 
+
 func _increment_score(i:int) -> void:
 	score += i
 	score_changed.emit(score)

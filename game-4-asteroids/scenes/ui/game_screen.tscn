@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://c0r7do12nofwv"]
+[gd_scene load_steps=4 format=3 uid="uid://c0r7do12nofwv"]
 
 [ext_resource type="PackedScene" uid="uid://dltdfcaaheqyy" path="res://scenes/ui/score_counter.tscn" id="1_8hmcv"]
+[ext_resource type="PackedScene" uid="uid://bylg16e2aysbg" path="res://scenes/ui/background.tscn" id="1_gusqm"]
+[ext_resource type="PackedScene" uid="uid://cvcy47bhitx4e" path="res://scenes/ui/life_counter.tscn" id="2_e2vrk"]
 
 [node name="GameScreen" type="CanvasLayer"]
+layer = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -13,3 +16,8 @@ grow_vertical = 2
 
 [node name="ScoreCounter" parent="MarginContainer" instance=ExtResource("1_8hmcv")]
 layout_mode = 2
+
+[node name="LifeCounter" parent="MarginContainer" instance=ExtResource("2_e2vrk")]
+layout_mode = 2
+
+[node name="Background" parent="." instance=ExtResource("1_gusqm")]

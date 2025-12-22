@@ -30,4 +30,4 @@ size_flags_horizontal = 0
 theme = ExtResource("2_jvmmt")
 theme_type_variation = &"ScoreCounterLabel"
 theme_override_font_sizes/font_size = 27
-text = "Score: "
+text = "Score: 0"

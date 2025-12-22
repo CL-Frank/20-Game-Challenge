@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvcy47bhitx4e"]
+
+[ext_resource type="Script" uid="uid://croisrwmuylgv" path="res://scenes/ui/life_counter.gd" id="1_apt2p"]
+[ext_resource type="Theme" uid="uid://bdof6ip2nwgv2" path="res://scenes/ui/game_ui_theme.tres" id="2_0k5wj"]
+[ext_resource type="Texture2D" uid="uid://s6iodtbo51u6" path="res://assets/simpleSpace_tilesheet@2.png" id="2_fbk0v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0k5wj"]
+atlas = ExtResource("2_fbk0v")
+region = Rect2(288, 144, 64, 96)
+
+[node name="LifeCounter" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+theme = ExtResource("2_0k5wj")
+theme_type_variation = &"ScoreCounter"
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Lives" type="Node2D" parent="Panel/MarginContainer"]
+position = Vector2(23.999998, 22.999998)
+scale = Vector2(0.4, 0.4)
+script = ExtResource("1_apt2p")
+life_sprite = SubResource("AtlasTexture_0k5wj")
