@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://30fo1st5w82t"]
+
+[ext_resource type="PackedScene" uid="uid://c12w5ylh427gx" path="res://scenes/player/player.tscn" id="1_07afm"]
+[ext_resource type="PackedScene" uid="uid://bj27m85sk1e85" path="res://scenes/components/asteroid_wave_component.tscn" id="2_m31hn"]
+
+[node name="TestSceneAsteroidWaves" type="Node2D"]
+
+[node name="AsteroidWaveComponent" parent="." node_paths=PackedStringArray("player", "asteroids") instance=ExtResource("2_m31hn")]
+debug = true
+player = NodePath("../Player")
+asteroids = NodePath("../Asteroids")
+
+[node name="Player" parent="." instance=ExtResource("1_07afm")]
+position = Vector2(640, 365)
+
+[node name="Asteroids" type="Node2D" parent="."]
