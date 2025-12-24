@@ -16,7 +16,7 @@ Each game will be listed below with a short description, tech stack used, and a 
 | 1      | Flappy Bird           | ✅ Completed |
 | 2      | Breakout           | ✅ Completed |
 | 3      | Frogger           | ✅ Completed |
-| 4      | Asteroids           | ⚒️ Busy |
+| 4      | Asteroids           | ✅ Completed |
 | 5      | Pac-Man           | 🔲 Planned |
 | More To Come|
 ---
@@ -178,11 +178,65 @@ A faithful clone of the 1981 arcade classic *Frogger*. Guide the frog across bus
 
 #### 🖼️ Screenshots
 
-<img width="829" height="962" alt="frogger_01" src="https://github.com/user-attachments/assets/a252059b-b4e0-4a1f-b07a-bd37d6072e55" />
+<img width="320" height="640" alt="frogger_01" src="https://github.com/user-attachments/assets/a252059b-b4e0-4a1f-b07a-bd37d6072e55" />
 <img width="374" height="270" alt="frogger_02" src="https://github.com/user-attachments/assets/52af32ea-aa4a-4cab-bf4e-76260f759224" />
 
 
 ---
+### ☄️ Game 4: Asteroids Clone
+
+A modern clone of the classic *Asteroids* arcade game. Pilot a ship in open space, rotate and thrust with inertia-based movement, shoot incoming asteroids, and survive as larger asteroids fragment into smaller, faster threats.
+
+**Date Completed**: *24 Decemeber 2-25*  
+**Engine / Framework**: Godot Engine  
+**Platform**: Web (HTML5)  
+
+**Play Here**: *[(https://cl-frank.itch.io/game-4-asteroids)](https://cl-frank.itch.io/game-4-asteroids)*  
+**Source Code**: ./game_4_asteroids/
+
+---
+
+#### 🧠 What I Learned
+
+* Applying **composition over inheritance** for flexible, reusable gameplay systems
+* Designing loosely coupled components using Godot signals
+* Implementing inertia-based movement and rotation mechanics
+* Managing entity lifecycles (spawning, splitting, despawning)
+* Applying core game design principles for difficulty scaling and player feedback
+
+---
+
+#### 🛠️ Features vs 📋 Original Challenge Goals
+
+| 🛠️ Core Features (Implemented)                         | 📋 Original Challenge Goals                        |
+| ------------------------------------------------------- | -------------------------------------------------- |
+| ✔ Player ship with rotation and thrust-based movement   | ✔ Create a ship that rotates and thrusts forward   |
+| ✔ Directional shooting system with timed bullet cleanup | ✔ Fire bullets in the ship’s facing direction      |
+| ✔ Three asteroid sizes with fragmentation logic         | ✔ Create three sizes of asteroids                  |
+| ✔ Asteroids split into smaller pieces when destroyed    | ✔ Break asteroids into smaller asteroids when shot |
+| ✔ Player life system with collision handling            | ✔ Lose a life on player–asteroid collision         |
+| ✔ Continuous screen wrapping for all entities           | ✔ Enable screen wrapping                           |
+| ✔ UI menus, score display, and game states              | ✔ Add menus and UI                                 |
+| ✔ Sound effects and particle-based explosions           | ✔ Add sound and particle effects                   |
+
+---
+
+#### ✨ Possible Improvements
+
+* Performance: object pooling for bullets and asteroids
+* Architecture: event bus pattern for decoupled communication
+* Configuration: external config files for tuning gameplay values
+* Structure: separate UI management from core game logic
+* Stability: improved error handling and edge-case coverage
+* Code quality: consistent null checks and scene path validation
+* Maintainability: clearer code documentation and comments
+
+---
+
+#### 🖼️ Screenshots
+<img width="374" height="270" alt="Screenshot 2025-12-24 110114" src="https://github.com/user-attachments/assets/22056948-47d1-488b-95c9-0466fe862102" />
+
+**
 
 ## 🛠 Tools I Use
 - **Game Engine**: Godot
