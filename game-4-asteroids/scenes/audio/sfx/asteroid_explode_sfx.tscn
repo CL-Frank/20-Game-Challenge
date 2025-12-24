@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://3xfe5wa6tl8"]
+
+[ext_resource type="AudioStream" uid="uid://xuv0f7ib7ohh" path="res://assets/audio/sfx/explode.wav" id="1_tnw42"]
+[ext_resource type="Script" uid="uid://dpge17xrcvcmd" path="res://scenes/audio/sfx/asteroid_explode_sfx.gd" id="2_enim3"]
+
+[node name="AsteroidExplodeSFX" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_tnw42")
+volume_db = -25.0
+script = ExtResource("2_enim3")

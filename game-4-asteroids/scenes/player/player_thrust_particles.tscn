@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://cnbkqh16umw4"]
+
+[sub_resource type="Gradient" id="Gradient_uccek"]
+colors = PackedColorArray(1, 0.29803923, 0.16862746, 1, 1, 1, 0.11764706, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2iylj"]
+gradient = SubResource("Gradient_uccek")
+
+[sub_resource type="Curve" id="Curve_uccek"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.30337077), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_2iylj"]
+curve = SubResource("Curve_uccek")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rgc7w"]
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(0, 1, 0)
+spread = 10.0
+initial_velocity_min = 60.0
+initial_velocity_max = 85.0
+gravity = Vector3(0, 0, 0)
+scale_min = 5.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_2iylj")
+color_ramp = SubResource("GradientTexture1D_2iylj")
+
+[node name="PlayerThrustParticles" type="GPUParticles2D"]
+speed_scale = 3.0
+process_material = SubResource("ParticleProcessMaterial_rgc7w")

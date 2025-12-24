@@ -1,10 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://c12w5ylh427gx"]
+[gd_scene load_steps=12 format=3 uid="uid://c12w5ylh427gx"]
 
 [ext_resource type="Texture2D" uid="uid://s6iodtbo51u6" path="res://assets/simpleSpace_tilesheet@2.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://bx1nfkuahqujr" path="res://scenes/player/player.gd" id="1_dovo2"]
-[ext_resource type="PackedScene" uid="uid://cc8fh1e81t87p" path="res://scenes/projectiles/laser/laser.tscn" id="2_p47bc"]
 [ext_resource type="PackedScene" uid="uid://dyk0848l4yc4e" path="res://scenes/components/screen_offset_component.tscn" id="3_gmlin"]
+[ext_resource type="PackedScene" uid="uid://mwmyfigcmf6r" path="res://scenes/player/player_death_particles.tscn" id="4_75vfm"]
 [ext_resource type="PackedScene" uid="uid://bbmisduepmm2b" path="res://scenes/components/hurt_component.tscn" id="4_lvxji"]
+[ext_resource type="AudioStream" uid="uid://u4ei1k2bvujn" path="res://assets/audio/sfx/player_die.wav" id="5_p47bc"]
+[ext_resource type="PackedScene" uid="uid://cnbkqh16umw4" path="res://scenes/player/player_thrust_particles.tscn" id="7_0owmy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75vfm"]
+atlas = ExtResource("1_8afob")
+region = Rect2(928, 640, 64, 114)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gmlin"]
 atlas = ExtResource("1_8afob")
@@ -20,11 +26,22 @@ z_index = 1
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_dovo2")
-laser_scene = ExtResource("2_p47bc")
 projectile_muzzle = NodePath("Muzzle")
 
 [node name="ScreenOffsetComponent" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_gmlin")]
 target = NodePath("..")
+
+[node name="PlayerDeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_p47bc")
+volume_db = -10.0
+
+[node name="PlayerDeathParticles" parent="." instance=ExtResource("4_75vfm")]
+
+[node name="Thrust" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 29)
+scale = Vector2(0.24999999, 0.2368421)
+texture = SubResource("AtlasTexture_75vfm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.6, 0.6)
@@ -42,3 +59,6 @@ shape = SubResource("CircleShape2D_75vfm")
 
 [node name="Muzzle" type="Marker2D" parent="."]
 position = Vector2(0, -40)
+
+[node name="PlayerThrustParticles" parent="." instance=ExtResource("7_0owmy")]
+position = Vector2(0, 29)

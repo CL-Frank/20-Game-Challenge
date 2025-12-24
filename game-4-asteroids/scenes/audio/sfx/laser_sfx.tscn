@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5ni4uyh3hl3q"]
+
+[ext_resource type="AudioStream" uid="uid://dk0ihl428vit0" path="res://assets/audio/sfx/sfx_laser1.ogg" id="1_b0m6d"]
+
+[node name="LaserSFX" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_b0m6d")
+volume_db = -20.0

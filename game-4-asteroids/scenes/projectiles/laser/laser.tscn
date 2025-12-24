@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://cc8fh1e81t87p"]
+[gd_scene load_steps=7 format=3 uid="uid://cc8fh1e81t87p"]
 
-[ext_resource type="Texture2D" uid="uid://dbti4pte2yw8r" path="res://assets/lasers/laserBlue01.png" id="1_drip1"]
 [ext_resource type="PackedScene" uid="uid://dyk0848l4yc4e" path="res://scenes/components/screen_offset_component.tscn" id="1_v3umy"]
 [ext_resource type="PackedScene" uid="uid://eqi7rlfp7cba" path="res://scenes/components/hit_component.tscn" id="2_tsjo6"]
+[ext_resource type="Texture2D" uid="uid://buxfafffu65n3" path="res://assets/lasers/laserBlue07.png" id="3_4saan"]
 [ext_resource type="PackedScene" uid="uid://vw4rlpbul6gm" path="res://scenes/components/projectile_component.tscn" id="4_4saan"]
+[ext_resource type="PackedScene" uid="uid://c5ni4uyh3hl3q" path="res://scenes/audio/sfx/laser_sfx.tscn" id="5_buomw"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_v3umy"]
-radius = 9.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_buomw"]
+radius = 4.0
+height = 36.0
 
 [node name="Laser" type="Node2D"]
 
@@ -20,13 +22,15 @@ collision_shape_2d = NodePath("../HitComponent/CollisionShape2D")
 target = NodePath("..")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -27)
-texture = ExtResource("1_drip1")
+position = Vector2(0, -17)
+texture = ExtResource("3_4saan")
 
 [node name="HitComponent" parent="." instance=ExtResource("2_tsjo6")]
-position = Vector2(0, -40)
 collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitComponent"]
-shape = SubResource("CircleShape2D_v3umy")
+position = Vector2(0, -17)
+shape = SubResource("CapsuleShape2D_buomw")
+
+[node name="LaserSFX" parent="." instance=ExtResource("5_buomw")]
